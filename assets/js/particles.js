@@ -1,5 +1,3 @@
-// Particle background animation with cool mouse-focus lines
-
 const canvas = document.getElementById("particle-canvas");
 const ctx = canvas.getContext("2d");
 
