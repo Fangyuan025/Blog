@@ -1,5 +1,3 @@
-// Main interactive script for the webapp
-
 // Mobile Navigation Toggle
 document.addEventListener("DOMContentLoaded", function() {
   const mobileMenu = document.getElementById("mobile-menu");
