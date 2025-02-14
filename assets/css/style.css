@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,32 +7,48 @@
 }
 
 body {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Montserrat', sans-serif;
   background-color: #1b1b1b;
   color: #e0e0e0;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* Navigation Styles */
+/* Modern Navigation Styles */
 header {
-  background-color: #272727;
+  background: linear-gradient(90deg, rgba(45,45,45,0.95), rgba(30,30,30,0.95));
+  backdrop-filter: blur(5px);
   position: fixed;
   width: 100%;
+  padding: 1rem 2rem;
+  top: 0;
   z-index: 1000;
-  border-bottom: 1px solid #0af;
+  opacity: 0;
+  animation: slideDown 0.8s ease forwards;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
 }
 
 nav .logo h1 {
   color: #0af;
   font-size: 1.8rem;
+  text-shadow: 1px 1px 2px rgba(0, 175, 255, 0.5);
 }
 
 .nav-links {
@@ -40,16 +58,34 @@ nav .logo h1 {
 
 .nav-links li {
   margin-left: 2rem;
+  position: relative;
 }
 
 .nav-links a {
   text-decoration: none;
   color: #e0e0e0;
+  font-weight: 500;
   transition: color 0.3s;
+  padding-bottom: 2px;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  left: 0;
+  bottom: -2px;
+  background: #0af;
+  transition: width 0.3s;
 }
 
 .nav-links a:hover {
   color: #0af;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 /* Mobile Menu */
@@ -64,6 +100,7 @@ nav .logo h1 {
   width: 25px;
   background-color: #e0e0e0;
   margin: 4px 0;
+  transition: transform 0.3s ease;
 }
 
 /* Hero Section with Particle Background */
@@ -94,20 +131,23 @@ nav .logo h1 {
   margin-bottom: 1.5rem;
 }
 
+/* Modern Button Design */
 .btn {
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1.8rem;
   border: none;
-  background-color: #0af;
+  background: linear-gradient(135deg, #0af, #099);
   color: #1b1b1b;
-  text-transform: uppercase;
   font-weight: bold;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
   text-decoration: none;
 }
 
 .btn:hover {
-  background-color: #099;
+  background: linear-gradient(135deg, #099, #0af);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 175, 255, 0.3);
 }
 
 /* Sections */
@@ -126,11 +166,15 @@ nav .logo h1 {
 }
 
 /* Education, Experience and Project Items */
-.education-item, .experience-item, .project-item {
+.education-item,
+.experience-item,
+.project-item {
   margin-bottom: 2.5rem;
 }
 
-.education-item h3, .experience-item h3, .project-item h3 {
+.education-item h3,
+.experience-item h3,
+.project-item h3 {
   font-size: 1.8rem;
   color: #0af;
   margin-bottom: 0.5rem;
@@ -149,31 +193,52 @@ a:hover {
   color: #fff;
 }
 
-/* Projects Filtering */
+/* Modern Filter Button Design */
 .filter-buttons {
   text-align: center;
   margin-bottom: 2rem;
 }
 
 .filter-btn {
-  background-color: #272727;
+  background: linear-gradient(135deg, #272727, #1e1e1e);
   color: #e0e0e0;
   margin: 0 0.5rem;
   padding: 0.5rem 1.2rem;
   border: 1px solid #0af;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.filter-btn.active, .filter-btn:hover {
-  background-color: #0af;
+.filter-btn.active,
+.filter-btn:hover {
+  background: linear-gradient(135deg, #0af, #099);
   color: #1b1b1b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 175, 255, 0.3);
 }
 
 .projects-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
+}
+
+/* Smooth Project Item Transition Animations */
+.project-item {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
 }
 
 /* Contact */

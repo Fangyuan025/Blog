@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // Projects filtering functionality
+  // Projects filtering functionality with smooth animation
   const filterButtons = document.querySelectorAll(".filter-btn");
   const projectItems = document.querySelectorAll(".project-item");
 
@@ -50,14 +50,12 @@ document.addEventListener("DOMContentLoaded", function() {
       const filter = this.getAttribute("data-filter");
       projectItems.forEach(item => {
         if (filter === "all" || item.getAttribute("data-category") === filter) {
+          item.classList.remove("fade-out");
+          item.classList.add("fade-in");
           item.style.display = "block";
-          // Fade in
-          setTimeout(() => {
-            item.style.opacity = 1;
-          }, 50);
         } else {
-          // Fade out then hide
-          item.style.opacity = 0;
+          item.classList.remove("fade-in");
+          item.classList.add("fade-out");
           setTimeout(() => {
             item.style.display = "none";
           }, 300);
