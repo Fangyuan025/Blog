@@ -254,6 +254,12 @@ a:hover {
   transform: scale(0.95);
 }
 
+/* Center project image */
+.project-image {
+  text-align: center;
+  margin-top: 1rem;
+}
+
 /* Contact */
 .contact-details p {
   margin-bottom: 1rem;

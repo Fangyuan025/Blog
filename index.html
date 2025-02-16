@@ -1,156 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fangyuan Lin - Nice to meet u~</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
-</head>
-<body>
-  <header>
-    <nav>
-      <div class="logo">
-        <h1>Fangyuan Lin</h1>
-      </div>
-      <ul class="nav-links">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="menu-toggle" id="mobile-menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Hero Section with Particle Canvas -->
-  <section id="hero" class="hero">
-    <canvas id="particle-canvas"></canvas>
-    <div class="hero-content">
-      <!-- The h2 element is now empty and will be filled with a typewriter animation -->
-      <h2 id="typewriter"></h2>
-      <p>
-        Master of Engineering student specializing in Electrical and Computer Engineering. 
-        I merge Machine Learning, NLP, and innovative design to solve complex problems.
-      </p>
-      <a href="#about" class="btn">Learn More</a>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="section about">
-    <h2>About Me</h2>
-    <p>
-      I'm a self-driven engineer with a passion for developing modular and production-ready ML pipelines.
-      Whether it's fine-tuning state-of-the-art models or designing dynamic web experiences, I'm always up for a challenge!
-    </p>
-  </section>
-
-  <!-- Education Section -->
-  <section id="education" class="section education">
-    <h2>Education</h2>
-    <div class="education-item">
-      <h3>University of Ottawa</h3>
-      <p>Master of Engineering, Electrical and Computer Engineering (2024.09 – Present)</p>
-    </div>
-    <div class="education-item">
-      <h3>Queen Mary University of London &amp; Beijing University of Posts and Telecommunications</h3>
-      <p>Bachelor of Engineering, Telecommunication Engineering and Management (2020.09 – 2024.07)</p>
-    </div>
-  </section>
-
-  <!-- Experience Section -->
-  <section id="experience" class="section experience">
-    <h2>Experience</h2>
-    <div class="experience-item">
-      <h3>Application to Classify Customer Complaints (2025.01 – Current)</h3>
-      <ul>
-        <li>Built a multi-algorithm ML system using SVM, Random Forest, KNN, Naive Bayes, SGD, and XGBoost.</li>
-        <li>Developed a reusable data pipeline for preprocessing, training, and evaluation in Python.</li>
-        <li>Conducted 10-fold cross-validation with TF-IDF features and visualized results.</li>
-      </ul>
-    </div>
-    <div class="experience-item">
-      <h3>Sentiment Analysis from Text and Speech (2023.11 – 2024.04)</h3>
-      <ul>
-        <li>Developed dual-modality analysis using Logistic Regression (text) and Random Forest (speech).</li>
-        <li>Built an interactive GUI with tkinter achieving ~93% accuracy for text classification.</li>
-      </ul>
-    </div>
-    <div class="experience-item">
-      <h3>NLP Algorithm Intern, Emotibot Technology (2023.07 – 2023.09)</h3>
-      <ul>
-        <li>Fine-tuned the LLaMA model using QLoRA and implemented quantization for chatbot deployment.</li>
-        <li>Enhanced dialogue accuracy and user experience through continuous model testing.</li>
-      </ul>
-    </div>
-    <div class="experience-item">
-      <h3>Independent Participant, Sentiment Analysis in Online Education (2023.01 – 2023.08)</h3>
-      <ul>
-        <li>Researched and implemented sentiment analysis using SVM and RNN techniques.</li>
-        <li>Published findings integrating sentiment analysis insights with educational psychology.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Projects Section with Left-side Vertical Sub Navigation -->
-  <section id="projects" class="section projects">
-    <h2>Projects</h2>
-    <div class="projects-layout">
-      <div class="filter-buttons">
-        <button class="filter-btn active" data-filter="chatbot">Chatbot</button>
-        <button class="filter-btn" data-filter="system">System</button>
-      </div>
-      <div class="projects-container">
-        <div class="project-item" data-category="chatbot">
-          <h3>Mock Interview Chatbot (2024.10 – 2024.12)</h3>
-          <ul>
-            <li>Implemented a chatbot using fine-tuned open source models to simulate interview scenarios.</li>
-            <li>Led model selection and team collaboration for innovative interview practice.</li>
-          </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fangyuan Lin - Nice to meet u~</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <h1>Fangyuan Lin</h1>
         </div>
-        <div class="project-item" data-category="system">
-          <h3>Student Achievement Management System (2022.08 – 2022.12)</h3>
-          <ul>
-            <li>Developed a Java-based application for recording and managing student achievements.</li>
-            <li>Utilized advanced data manipulation techniques and agile development methods.</li>
-          </ul>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section with Particle Canvas -->
+    <section id="hero" class="hero">
+      <canvas id="particle-canvas"></canvas>
+      <div class="hero-content">
+        <!-- The h2 element is now empty and will be filled with a typewriter animation -->
+        <h2 id="typewriter"></h2>
+        <p>
+          Master of Engineering student specializing in Electrical and Computer
+          Engineering. I merge Machine Learning, NLP, and innovative design to
+          solve complex problems.
+        </p>
+        <a href="#about" class="btn">Learn More</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+      <h2>About Me</h2>
+      <p>
+        I'm a self-driven engineer with a passion for developing modular and production-ready ML pipelines.
+        Whether it's fine-tuning state-of-the-art models or designing dynamic web experiences,
+        I'm always up for a challenge!
+      </p>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section education">
+      <h2>Education</h2>
+      <div class="education-item">
+        <h3>University of Ottawa</h3>
+        <p>Master of Engineering, Electrical and Computer Engineering (2024.09 – Present)</p>
+      </div>
+      <div class="education-item">
+        <h3>Queen Mary University of London &amp; Beijing University of Posts and Telecommunications</h3>
+        <p>Bachelor of Engineering, Telecommunication Engineering and Management (2020.09 – 2024.07)</p>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section experience">
+      <h2>Experience</h2>
+      <div class="experience-item">
+        <h3>Application to Classify Customer Complaints (2025.01 – Current)</h3>
+        <ul>
+          <li>Built a multi-algorithm ML system using SVM, Random Forest, KNN, Naive Bayes, SGD, and XGBoost.</li>
+          <li>Developed a reusable data pipeline for preprocessing, training, and evaluation in Python.</li>
+          <li>Conducted 10-fold cross-validation with TF-IDF features and visualized results.</li>
+        </ul>
+      </div>
+      <div class="experience-item">
+        <h3>Sentiment Analysis from Text and Speech (2023.11 – 2024.04)</h3>
+        <ul>
+          <li>Developed dual-modality analysis using Logistic Regression (text) and Random Forest (speech).</li>
+          <li>Built an interactive GUI with tkinter achieving ~93% accuracy for text classification.</li>
+        </ul>
+      </div>
+      <div class="experience-item">
+        <h3>NLP Algorithm Intern, Emotibot Technology (2023.07 – 2023.09)</h3>
+        <ul>
+          <li>Fine-tuned the LLaMA model using QLoRA and implemented quantization for chatbot deployment.</li>
+          <li>Enhanced dialogue accuracy and user experience through continuous model testing.</li>
+        </ul>
+      </div>
+      <div class="experience-item">
+        <h3>Independent Participant, Sentiment Analysis in Online Education (2023.01 – 2023.08)</h3>
+        <ul>
+          <li>Researched and implemented sentiment analysis using SVM and RNN techniques.</li>
+          <li>Published findings integrating sentiment analysis insights with educational psychology.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Projects Section with Left-side Vertical Sub Navigation -->
+    <section id="projects" class="section projects">
+      <h2>Projects</h2>
+      <div class="projects-layout">
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="chatbot">Chatbot</button>
+          <button class="filter-btn" data-filter="system">System</button>
+        </div>
+        <div class="projects-container">
+          <div class="project-item" data-category="chatbot">
+            <h3>Mock Interview Chatbot (2024.10 – 2024.12)</h3>
+            <ul>
+              <li>
+                Implemented a chatbot using fine-tuned open source models to simulate interview scenarios.
+              </li>
+              <li>
+                Led model selection and team collaboration for innovative interview practice.
+              </li>
+            </ul>
+            <!-- Bot logo added just below the chatbot texts and now centered -->
+            <div class="project-image">
+              <img src="assets/images/botlogo.png" alt="Bot Logo" />
+            </div>
+          </div>
+          <div class="project-item" data-category="system">
+            <h3>Student Achievement Management System (2022.08 – 2022.12)</h3>
+            <ul>
+              <li>
+                Developed a Java-based application for recording and managing student achievements.
+              </li>
+              <li>
+                Utilized advanced data manipulation techniques and agile development methods.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section contact">
-    <h2>Contact</h2>
-    <div class="contact-details">
-      <p><strong>Email:</strong> <a href="mailto:flin025@uottawa.ca">flin025@uottawa.ca</a></p>
-      <p><strong>Mobile:</strong> +1 (343) 368-7929</p>
-      <p><strong>Address:</strong> 800 King Edward Avenue, Ottawa, Ontario, Canada, K1N 6N5</p>
-      <p>
-        <strong>LinkedIn:</strong>
-        <a href="https://www.linkedin.com/in/fangyuan-lin-4b51b1336/" target="_blank">Fangyuan Lin</a>
-      </p>
-      <p>
-        <strong>GitHub:</strong>
-        <a href="https://github.com/Fangyuan025" target="_blank">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub" width="30" height="30">
-        </a>
-      </p>
-    </div>
-  </section>
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+      <h2>Contact</h2>
+      <div class="contact-details">
+        <p><strong>Email:</strong> <a href="mailto:flin025@uottawa.ca">flin025@uottawa.ca</a></p>
+        <p><strong>Mobile:</strong> +1 (343) 368-7929</p>
+        <p><strong>Address:</strong> 800 King Edward Avenue, Ottawa, Ontario, Canada, K1N 6N5</p>
+        <p>
+          <strong>LinkedIn:</strong>
+          <a href="https://www.linkedin.com/in/fangyuan-lin-4b51b1336/" target="_blank">Fangyuan Lin</a>
+        </p>
+        <p>
+          <strong>GitHub:</strong>
+          <a href="https://github.com/Fangyuan025" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub" width="30" height="30" />
+          </a>
+        </p>
+      </div>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 Fangyuan Lin. All rights reserved.</p>
-  </footer>
+    <footer>
+      <p>&copy; 2025 Fangyuan Lin. All rights reserved.</p>
+    </footer>
 
-  <script src="assets/js/particles.js"></script>
-  <script src="assets/js/main.js"></script>
-</body>
+    <script src="assets/js/particles.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>
