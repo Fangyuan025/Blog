@@ -26,9 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute("href"));
       if (target) {
-        target.scrollIntoView({
-          behavior: "smooth"
-        });
+        target.scrollIntoView({ behavior: "smooth" });
       }
       // Close mobile menu if open
       if (navLinks.classList.contains("active")) {
@@ -37,12 +35,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // Projects filtering functionality with smooth animation
+  // Projects filtering functionality with smooth animation on mouse hover
   const filterButtons = document.querySelectorAll(".filter-btn");
   const projectItems = document.querySelectorAll(".project-item");
 
   filterButtons.forEach(btn => {
-    btn.addEventListener("click", function() {
+    btn.addEventListener("mouseenter", function() {
       // Remove active class from all buttons
       filterButtons.forEach(button => button.classList.remove("active"));
       this.classList.add("active");

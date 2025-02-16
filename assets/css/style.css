@@ -193,32 +193,45 @@ a:hover {
   color: #fff;
 }
 
-/* Modern Filter Button Design */
+/* Updated Projects Section Layout */
+.projects-layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Left-side Sub Navigation */
 .filter-buttons {
-  text-align: center;
-  margin-bottom: 2rem;
+  background: transparent;
+  border-right: 2px solid #0af;
+  flex: 0 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 1rem;
 }
 
 .filter-btn {
-  background: linear-gradient(135deg, #272727, #1e1e1e);
+  background: transparent;
   color: #e0e0e0;
-  margin: 0 0.5rem;
-  padding: 0.5rem 1.2rem;
-  border: 1px solid #0af;
-  border-radius: 6px;
+  margin-bottom: 1rem;
+  padding: 0.8rem 1rem;
+  border: none;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: color 0.3s, border-left 0.3s;
+  border-left: 3px solid transparent;
 }
 
-.filter-btn.active,
-.filter-btn:hover {
-  background: linear-gradient(135deg, #0af, #099);
-  color: #1b1b1b;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 175, 255, 0.3);
+.filter-btn:hover,
+.filter-btn.active {
+  color: #0af;
+  border-left: 3px solid #0af;
 }
 
+/* Projects Container */
 .projects-container {
+  flex: 1;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
