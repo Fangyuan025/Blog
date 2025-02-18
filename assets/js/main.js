@@ -2,7 +2,9 @@
 document.addEventListener("DOMContentLoaded", function() {
   // Typewriter effect for the hero text
   const typewriterElement = document.getElementById("typewriter");
-  const fullText = "Welcome! I'm Fangyuan Lin";
+  const fullTextEn = "Welcome! I'm Fangyuan Lin";
+  const fullTextFr = "Bienvenue! Je suis Fangyuan Lin";
+  const fullText = document.documentElement.lang === "fr" ? fullTextFr : fullTextEn;
   let currentIndex = 0;
   function typeWriter() {
     if (currentIndex < fullText.length) {
