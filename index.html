@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Fangyuan Lin - Nice to meet u~</title>
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   </head>
   <body>
     <header>
@@ -33,7 +32,6 @@
     <section id="hero" class="hero">
       <canvas id="particle-canvas"></canvas>
       <div class="hero-content">
-        <!-- The h2 element is now empty and will be filled with a typewriter animation -->
         <h2 id="typewriter"></h2>
         <p>
           Master of Engineering student specializing in Electrical and Computer
@@ -120,7 +118,6 @@
                 Led model selection and team collaboration for innovative interview practice.
               </li>
             </ul>
-            <!-- Bot logo added just below the chatbot texts and now centered -->
             <div class="project-image">
               <img src="assets/images/botlogo.png" alt="Bot Logo" />
             </div>
@@ -158,6 +155,33 @@
           </a>
         </p>
       </div>
+      <div class="feedback-form">
+        <h3>Feedback</h3>
+        <form id="feedback-form" action="https://formspree.io/f/mkgopyqr" method="POST">
+          <div class="form-group">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first-name" required />
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last-name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <div class="form-group button-group">
+            <button type="submit" class="btn">Send Feedback</button>
+          </div>
+        </form>
+        <div id="feedback-response" style="display:none; color: #0af; text-align: center; margin-top: 1rem;">
+          Thank you for your feedback!
+        </div>
+      </div>
     </section>
 
     <footer>
@@ -166,5 +190,47 @@
 
     <script src="assets/js/particles.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+      let isFormSubmitted = false;
+
+      document.getElementById('feedback-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        if (isFormSubmitted) {
+          alert('You have already submitted the form. Please wait before submitting again.');
+          return;
+        }
+
+        var form = event.target;
+        var data = new FormData(form);
+
+        fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        }).then(response => {
+          if (response.ok) {
+            document.getElementById('feedback-form').reset();
+            document.getElementById('feedback-response').style.display = 'block';
+            isFormSubmitted = true;
+            setTimeout(() => {
+              isFormSubmitted = false;
+            }, 30000); // 30 seconds cooldown
+          } else {
+            response.json().then(data => {
+              if (Object.hasOwn(data, 'errors')) {
+                alert(data["errors"].map(error => error["message"]).join(", "));
+              } else {
+                alert('Oops! There was a problem submitting your form');
+              }
+            });
+          }
+        }).catch(error => {
+          alert('Oops! There was a problem submitting your form');
+        });
+      });
+    </script>
   </body>
 </html>
