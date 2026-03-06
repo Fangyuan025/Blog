@@ -3,24 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fangyuan Lin - Ravi de vous rencontrer~</title>
+    <title>Fangyuan Lin - Ingénieur ML & Logiciel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
     <header>
       <nav>
         <div class="logo">
-          <h1>Fangyuan Lin</h1>
+          <h1>Fangyuan<span>.</span></h1>
         </div>
         <ul class="nav-links">
           <li><a href="#hero">Accueil</a></li>
           <li><a href="#about">À propos</a></li>
-          <li><a href="#education">Éducation</a></li>
           <li><a href="#experience">Expérience</a></li>
           <li><a href="#projects">Projets</a></li>
-          <li><a href="#certifications">Certifications</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a id="language-toggle" href="index.html">En</a></li>
+          <li><a id="language-toggle" href="index.html" class="lang-btn">EN</a></li>
         </ul>
         <div class="menu-toggle" id="mobile-menu">
           <span class="bar"></span>
@@ -29,184 +32,200 @@
         </div>
       </nav>
     </header>
-    <!-- Hero Section with Particle Canvas -->
+
     <section id="hero" class="hero">
       <canvas id="particle-canvas"></canvas>
       <div class="hero-content">
-        <h2 id="typewriter"></h2>
-        <p>
-          Étudiant en Master en ingénierie spécialisé en génie électrique et informatique. J'intègre l'apprentissage automatique, le traitement du langage naturel et la conception innovante pour résoudre des problèmes complexes.
+        <h2 id="typewriter" class="glitch-text"></h2>
+        <p class="subtitle">
+          Étudiant en Master en ingénierie spécialisé en ECE @ uOttawa.<br>
+          J'intègre l'apprentissage automatique, le NLP et la conception innovante.
         </p>
-        <a href="#about" class="btn">En savoir plus</a>
-      </div>
-    </section>
-    <!-- About Section -->
-    <section id="about" class="section about">
-      <h2>À propos de moi</h2>
-      <p>
-        Je suis étudiant en Master en génie électrique et informatique à l'Université d'Ottawa, spécialisé en apprentissage automatique, traitement du langage naturel et analyse de données. Grâce à mon expérience pratique, je m'épanouis dans la résolution de problèmes complexes du monde réel!
-      </p>
-    </section>
-    <!-- Education Section -->
-    <section id="education" class="section education">
-      <h2>Éducation</h2>
-      <div class="education-item">
-        <h3>Université d'Ottawa</h3>
-        <p>Master en ingénierie, génie électrique et informatique (2024.09 – 2026.05)</p>
-      </div>
-      <div class="education-item">
-        <h3>Queen Mary University of London &amp; Beijing University of Posts and Telecommunications</h3>
-        <p>Bachelor en ingénierie, ingénierie des télécommunications et gestion (2020.09 – 2024.07)</p>
-      </div>
-    </section>
-    <!-- Experience Section -->
-    <section id="experience" class="section experience">
-      <h2>Expérience</h2>
-      <div class="experience-item">
-        <h3>Stagiaire en algorithme NLP, Emotibot Technology (2023.07 – 2023.09)</h3>
-        <ul>
-          <li>Affiné le modèle LLaMA en utilisant QLoRA pour optimiser les performances d'une application de chatbot.</li>
-          <li>Réalisé le réglage des hyperparamètres, l'évaluation du modèle et implémenté des techniques de quantification pour un déploiement efficace.</li>
-          <li>Amélioré la précision des dialogues et l'expérience utilisateur en testant et en affinant les modèles ML.</li>
-          <li>Acquis une expérience pratique dans l'affinage de modèles et le déploiement d'applications réelles.</li>
-        </ul>
-      </div>
-      <div class="experience-item">
-        <h3>Ingénieur NLP Stagiaire, Magic Data (2023.05 – 2023.06)</h3>
-        <ul>
-          <li>Utilisé des techniques de prompting pour optimiser la sortie des grands modèles de langage (LLM) et réalisé des évaluations de capacités au niveau applicatif.</li>
-          <li>Optimisé manuellement les résultats et évalué les performances du modèle pour développer la meilleure stratégie de génération.</li>
-        </ul>
-      </div>
-      <div class="experience-item">
-        <h3>Analyse des sentiments à partir du texte et de la parole (2023.11 – 2024.04)</h3>
-        <ul>
-          <li>Développé une analyse à double modalité en utilisant la régression logistique (texte) et Random Forest (parole).</li>
-          <li>Construit une interface utilisateur interactive avec tkinter atteignant ~93% de précision pour la classification des textes.</li>
-        </ul>
-      </div>
-      <div class="experience-item">
-        <h3>Participant indépendant, Analyse des sentiments dans l'éducation en ligne (2023.01 – 2023.08)</h3>
-        <ul>
-          <li>Recherche et implémentation de l'analyse des sentiments en utilisant les techniques SVM et RNN.</li>
-          <li>Publié des résultats intégrant les perspectives de l'analyse des sentiments avec la psychologie de l'éducation.</li>
-        </ul>
-      </div>
-    </section>
-    <!-- Projects Section -->
-    <section id="projects" class="section projects">
-      <h2>Projets</h2>
-      <div class="projects-layout">
-        <div class="filter-buttons">
-          <button class="filter-btn active" data-filter="ml">IA / NLP</button>
-          <button class="filter-btn" data-filter="chatbot">Chatbot</button>
-          <button class="filter-btn" data-filter="system">Système</button>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">Voir mon travail</a>
+          <a href="#contact" class="btn btn-secondary">Me contacter</a>
         </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2 class="section-title"><span><i class="fa-solid fa-user-astronaut"></i></span> À propos & Éducation</h2>
+      <div class="about-grid">
+        <div class="glass-card about-text">
+          <p>
+            Je suis étudiant en Master en génie électrique et informatique à l'<strong>Université d'Ottawa</strong>, spécialisé en apprentissage automatique, traitement du langage naturel et analyse de données. Grâce à mon expérience pratique, je m'épanouis dans la résolution de problèmes complexes.
+          </p>
+        </div>
+        <div class="glass-card education-card">
+          <div class="edu-item">
+            <i class="fa-solid fa-graduation-cap edu-icon"></i>
+            <div>
+              <h3>Université d'Ottawa</h3>
+              <p class="highlight">Master en ingénierie, ECE</p>
+              <span class="date">Sept 2024 – Mai 2026</span>
+            </div>
+          </div>
+          <div class="edu-item">
+            <i class="fa-solid fa-university edu-icon"></i>
+            <div>
+              <h3>Queen Mary Univ. of London & BUPT</h3>
+              <p class="highlight">Bachelor en ingénierie, Télécommunications</p>
+              <span class="date">Sept 2020 – Juil 2024</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <h2 class="section-title"><span><i class="fa-solid fa-briefcase"></i></span> Expérience</h2>
+      <div class="timeline">
+        <div class="timeline-item glass-card">
+          <div class="timeline-dot"></div>
+          <span class="date">Juil 2023 – Sept 2023</span>
+          <h3>Stagiaire en algorithme NLP</h3>
+          <h4 class="highlight">Emotibot Technology</h4>
+          <ul>
+            <li>Affiné le modèle LLaMA en utilisant QLoRA pour optimiser les performances d'un chatbot.</li>
+            <li>Réalisé le réglage des hyperparamètres et implémenté des techniques de quantification.</li>
+            <li>Amélioré la précision des dialogues et l'expérience utilisateur des modèles ML.</li>
+          </ul>
+        </div>
+        <div class="timeline-item glass-card">
+          <div class="timeline-dot"></div>
+          <span class="date">Mai 2023 – Juin 2023</span>
+          <h3>Ingénieur NLP Stagiaire</h3>
+          <h4 class="highlight">Magic Data</h4>
+          <ul>
+            <li>Utilisé des techniques de prompting pour optimiser les LLMs et évalué les capacités applicatives.</li>
+            <li>Évalué les performances du modèle pour développer la meilleure stratégie de génération.</li>
+          </ul>
+        </div>
+        <div class="timeline-item glass-card">
+          <div class="timeline-dot"></div>
+          <span class="date">Nov 2023 – Avr 2024</span>
+          <h3>Chercheur en analyse des sentiments</h3>
+          <h4 class="highlight">Modalités Texte et Parole</h4>
+          <ul>
+            <li>Développé une analyse à double modalité (régression logistique et Random Forest).</li>
+            <li>Construit une interface interactive avec tkinter atteignant ~93% de précision pour le texte.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section projects">
+      <h2 class="section-title"><span><i class="fa-solid fa-code"></i></span> Projets</h2>
+      <div class="projects-layout">
+        <div class="filter-buttons glass-card">
+          <button class="filter-btn active" data-filter="ml"><i class="fa-solid fa-brain"></i> IA / NLP</button>
+          <button class="filter-btn" data-filter="chatbot"><i class="fa-solid fa-robot"></i> Chatbots</button>
+          <button class="filter-btn" data-filter="system"><i class="fa-solid fa-server"></i> Systèmes</button>
+        </div>
+        
         <div class="projects-container">
-          <div class="project-item" data-category="ml">
-            <h3>Classificateur de tweets (2025.01 – 2025.02)</h3>
+          <div class="project-item glass-card" data-category="ml">
+            <div class="project-header">
+              <h3>Classificateur de tweets</h3>
+              <span class="project-date">Jan 2025 – Fév 2025</span>
+            </div>
             <ul>
-              <li>Construit un système ML multi-algorithmes pour la classification des plaintes clients utilisant SVM, Random Forest, KNN, Naive Bayes, SGD et XGBoost.</li>
-              <li>Développé un pipeline réutilisable pour le prétraitement des données, la formation et l'évaluation en Python.</li>
-              <li>Réalisé une validation croisée à 10 plis avec des caractéristiques TF-IDF et évalué les métriques de performance (précision, rappel, F1-score).</li>
-              <li>Visualisé les résultats avec des matrices de confusion et des distributions de classes.</li>
+              <li>Système ML multi-algorithmes pour les plaintes clients (SVM, RF, KNN, Naive Bayes, XGBoost).</li>
+              <li>Développé un pipeline réutilisable avec validation croisée à 10 plis.</li>
             </ul>
           </div>
-          <div class="project-item" data-category="chatbot">
-            <h3>Chatbot d'entretien simulé (2024.10 – 2024.12)</h3>
+          <div class="project-item glass-card" data-category="chatbot">
+            <div class="project-header">
+              <h3>Chatbot d'entretien simulé</h3>
+              <span class="project-date">Oct 2024 – Déc 2024</span>
+            </div>
             <ul>
-              <li>Proposé et implémenté un concept de chatbot d'entretien simulé en utilisant des modèles open source affinés.</li>
-              <li>Dirigé l'équipe dans la recherche, la sélection de modèles et les réunions de suivi, améliorant la collaboration.</li>
-              <li>Renforcé la maîtrise de Python et acquis une expérience en formation de modèles pour l'IA conversationnelle.</li>
+              <li>Implémenté un chatbot d'entretien simulé utilisant des modèles open source affinés.</li>
+              <li>Dirigé l'équipe de recherche et la formation de l'IA conversationnelle en Python.</li>
             </ul>
             <div class="project-image">
               <img src="assets/images/botlogo.png" alt="Bot Logo" />
             </div>
           </div>
-          <div class="project-item" data-category="chatbot">
-            <h3>Système de recommandation de nouvelles par chatbot</h3>
+          <div class="project-item glass-card" data-category="chatbot">
+            <div class="project-header">
+              <h3>Chatbot de recommandation de nouvelles</h3>
+            </div>
             <ul>
-              <li>Système complet d'analyse de texte et de recommandation pour articles d'actualité combinant clustering, classification et filtrage collaboratif.</li>
-              <li>Fournit des recommandations personnalisées via une interface chatbot interactive.</li>
+              <li>Système complet d'analyse de texte et de recommandation pour articles d'actualité.</li>
+              <li>Combine le clustering, la classification et le filtrage collaboratif.</li>
             </ul>
           </div>
-          <div class="project-item" data-category="ml">
-            <h3>Un jeu sérieux de mathématiques</h3>
+          <div class="project-item glass-card" data-category="system">
+            <div class="project-header">
+              <h3>Gestion des réalisations</h3>
+              <span class="project-date">Aoû 2022 – Déc 2022</span>
+            </div>
             <ul>
-              <li>Un jeu de mathématiques interactif développé avec Python et des grands modèles de langage (LLM).</li>
-              <li>Met les joueurs au défi de résoudre des problèmes mathématiques le plus rapidement possible.</li>
-            </ul>
-          </div>
-          <div class="project-item" data-category="system">
-            <h3>Système de gestion des réalisations des étudiants (2022.08 – 2022.12)</h3>
-            <ul>
-              <li>Développé une application Java pour enregistrer et gérer les réalisations des étudiants.</li>
-              <li>Utilisé des techniques avancées de manipulation de données et des méthodes de développement agile.</li>
+              <li>Développé une application Java pour gérer les réalisations des étudiants.</li>
+              <li>Utilisé des techniques de manipulation de données et méthodes agiles.</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
-    <!-- Certifications Section -->
-    <section id="certifications" class="section certifications">
-      <h2>Certifications</h2>
-      <div class="certification-item">
-        <h3>IBM Data Analyst &mdash; IBM</h3>
-        <p>Délivré en mars 2026 &bull; Compétences : SQL, Analyse de données</p>
-      </div>
-      <div class="certification-item">
-        <h3>IBM Machine Learning Specialization &mdash; IBM</h3>
-        <p>Délivré en février 2025 &bull; Compétences : Apprentissage automatique, Science des données</p>
-      </div>
-    </section>
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-      <h2>Contact</h2>
-      <div class="contact-details">
-        <p><strong>Email:</strong> <a href="mailto:flin025@uottawa.ca">flin025@uottawa.ca</a></p>
-        <p><strong>Téléphone:</strong> +1 (343) 368-7929</p>
-        <p><strong>Adresse:</strong> 800 King Edward Avenue, Ottawa, Ontario, Canada, K1N 6N5</p>
-        <p>
-          <strong>LinkedIn:</strong>
-          <a href="https://www.linkedin.com/in/fangyuanlin/" target="_blank">Fangyuan Lin</a>
-        </p>
-        <p>
-          <strong>GitHub:</strong>
-          <a href="https://github.com/Fangyuan025" target="_blank">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub" width="30" height="30" />
-          </a>
-        </p>
-      </div>
-      <div class="feedback-form">
-        <h3>Retour d'information</h3>
-        <form id="feedback-form" action="https://formspree.io/f/mkgopyqr" method="POST">
-          <div class="form-group">
-            <label for="first-name">Prénom:</label>
-            <input type="text" id="first-name" name="first-name" required />
+
+    <section id="contact" class="section">
+      <h2 class="section-title"><span><i class="fa-regular fa-paper-plane"></i></span> Me Contacter</h2>
+      <div class="contact-grid">
+        
+        <div class="contact-info glass-card">
+          <h3>Coordonnées</h3>
+          <ul class="info-list">
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:flin025@uottawa.ca">flin025@uottawa.ca</a></li>
+            <li><i class="fa-solid fa-phone"></i> +1 (343) 368-7929</li>
+            <li><i class="fa-solid fa-location-dot"></i> Ottawa, ON, Canada</li>
+          </ul>
+          
+          <h3 class="mt-4">Certifications</h3>
+          <ul class="cert-list">
+            <li><i class="fa-brands fa-ibm"></i> <strong>IBM Data Analyst</strong> (Mars 2026)</li>
+            <li><i class="fa-brands fa-ibm"></i> <strong>IBM ML Specialization</strong> (Fév 2025)</li>
+          </ul>
+
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/fangyuanlin/" target="_blank" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/Fangyuan025" target="_blank" class="social-btn"><i class="fa-brands fa-github"></i></a>
           </div>
-          <div class="form-group">
-            <label for="last-name">Nom de famille:</label>
-            <input type="text" id="last-name" name="last-name" required />
+        </div>
+
+        <div class="feedback-form glass-card">
+          <h3>Envoyer un message</h3>
+          <form id="feedback-form" action="https://formspree.io/f/mkgopyqr" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <input type="text" id="first-name" name="first-name" placeholder="Prénom" required />
+              </div>
+              <div class="form-group">
+                <input type="text" id="last-name" name="last-name" placeholder="Nom de famille" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" placeholder="Adresse Email" required />
+            </div>
+            <div class="form-group">
+              <textarea id="message" name="message" rows="4" placeholder="Votre Message..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Envoyer <i class="fa-solid fa-paper-plane"></i></button>
+          </form>
+          <div id="feedback-response" style="display:none" class="success-msg">
+            <i class="fa-solid fa-circle-check"></i> Merci! Message envoyé.
           </div>
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div class="form-group">
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          <button type="submit">Envoyer des commentaires</button>
-        </form>
-        <div id="feedback-response" style="display:none">
-          <p>Merci pour votre retour!</p>
         </div>
       </div>
     </section>
+
     <footer>
-      <p>&copy; 2025 Fangyuan Lin. All rights reserved.</p>
+      <p>&copy; 2025 Fangyuan Lin. Conçu pour le futur.</p>
     </footer>
+
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/particles.js"></script>
     <script>
       let isFormSubmitted = false;
       document.getElementById('feedback-form').addEventListener('submit', function(event) {
@@ -220,25 +239,15 @@
         fetch(form.action, {
           method: form.method,
           body: data,
-          headers: {
-            'Accept': 'application/json'
-          }
+          headers: { 'Accept': 'application/json' }
         }).then(response => {
           if (response.ok) {
             document.getElementById('feedback-form').reset();
             document.getElementById('feedback-response').style.display = 'block';
             isFormSubmitted = true;
-            setTimeout(() => {
-              isFormSubmitted = false;
-            }, 30000);
+            setTimeout(() => { isFormSubmitted = false; }, 30000);
           } else {
-            response.json().then(data => {
-              if (Object.hasOwn(data, 'errors')) {
-                alert(data["errors"].map(error => error["message"]).join(", "));
-              } else {
-                alert('Oups! Il y a eu un problème lors de la soumission de votre formulaire');
-              }
-            });
+            alert('Oups! Il y a eu un problème lors de la soumission de votre formulaire');
           }
         }).catch(error => {
           alert('Oups! Il y a eu un problème lors de la soumission de votre formulaire');
