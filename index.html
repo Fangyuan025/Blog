@@ -3,24 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fangyuan Lin - Nice to meet u~</title>
+    <title>Fangyuan Lin - ML & Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
     <header>
       <nav>
         <div class="logo">
-          <h1>Fangyuan Lin</h1>
+          <h1>Fangyuan<span>.</span></h1>
         </div>
         <ul class="nav-links">
           <li><a href="#hero">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#education">Education</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
-          <li><a href="#certifications">Certifications</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a id="language-toggle" href="index_fr.html">Fr</a></li>
+          <li><a id="language-toggle" href="index_fr.html" class="lang-btn">FR</a></li>
         </ul>
         <div class="menu-toggle" id="mobile-menu">
           <span class="bar"></span>
@@ -29,196 +32,202 @@
         </div>
       </nav>
     </header>
-    <!-- Hero Section with Particle Canvas -->
+
     <section id="hero" class="hero">
       <canvas id="particle-canvas"></canvas>
       <div class="hero-content">
-        <h2 id="typewriter"></h2>
-        <p>
-          Master of Engineering student specializing in Electrical and Computer
-          Engineering. I merge Machine Learning, NLP, and innovative design to
-          solve complex problems.
+        <h2 id="typewriter" class="glitch-text"></h2>
+        <p class="subtitle">
+          Master of Engineering in ECE @ uOttawa.<br>
+          Merging Machine Learning, NLP, and Innovative Design.
         </p>
-        <a href="#about" class="btn">Learn More</a>
-      </div>
-    </section>
-    <!-- About Section -->
-    <section id="about" class="section about">
-      <h2>About Me</h2>
-      <p>
-        I am a Master of Engineering student in Electrical and Computer Engineering at the
-        University of Ottawa, specializing in Machine Learning, NLP, and data analysis. With
-        hands-on experience, I thrive on solving complex real-world problems!
-      </p>
-    </section>
-    <!-- Education Section -->
-    <section id="education" class="section education">
-      <h2>Education</h2>
-      <div class="education-item">
-        <h3>University of Ottawa</h3>
-        <p>Master of Engineering, Electrical and Computer Engineering (2024.09 – 2026.05)</p>
-      </div>
-      <div class="education-item">
-        <h3>Queen Mary University of London &amp; Beijing University of Posts and Telecommunications</h3>
-        <p>Bachelor of Engineering, Telecommunication Engineering and Management (2020.09 – 2024.07)</p>
-      </div>
-    </section>
-    <!-- Experience Section -->
-    <section id="experience" class="section experience">
-      <h2>Experience</h2>
-      <div class="experience-item">
-        <h3>NLP Algorithm Intern, Emotibot Technology (2023.07 – 2023.09)</h3>
-        <ul>
-          <li>Fine-tuned the LLaMA model using QLoRA to optimize performance for a chatbot application.</li>
-          <li>Conducted hyperparameter tuning, model evaluation, and implemented quantization techniques for efficient deployment.</li>
-          <li>Improved dialog accuracy and user experience by testing and refining ML models.</li>
-          <li>Gained hands-on experience in model fine-tuning and deploying real-world applications.</li>
-        </ul>
-      </div>
-      <div class="experience-item">
-        <h3>NLP Engineer Intern, Magic Data (2023.05 – 2023.06)</h3>
-        <ul>
-          <li>Used prompting techniques to optimize the output of Large Language Models (LLMs) and conducted application-level capability assessments.</li>
-          <li>Manually optimized output results and evaluated model performance to develop the best strategy to complete generation tasks.</li>
-        </ul>
-      </div>
-      <div class="experience-item">
-        <h3>Sentiment Analysis from Text and Speech (2023.11 – 2024.04)</h3>
-        <ul>
-          <li>Developed dual-modality analysis using Logistic Regression (text) and Random Forest (speech).</li>
-          <li>Built an interactive GUI with tkinter achieving ~93% accuracy for text classification.</li>
-        </ul>
-      </div>
-      <div class="experience-item">
-        <h3>Independent Participant, Sentiment Analysis in Online Education (2023.01 – 2023.08)</h3>
-        <ul>
-          <li>Researched and implemented sentiment analysis using SVM and RNN techniques.</li>
-          <li>Published findings integrating sentiment analysis insights with educational psychology.</li>
-        </ul>
-      </div>
-    </section>
-    <!-- Projects Section with Left-side Vertical Sub Navigation -->
-    <section id="projects" class="section projects">
-      <h2>Projects</h2>
-      <div class="projects-layout">
-        <div class="filter-buttons">
-          <button class="filter-btn active" data-filter="ml">ML / NLP</button>
-          <button class="filter-btn" data-filter="chatbot">Chatbot</button>
-          <button class="filter-btn" data-filter="system">System</button>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
         </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2 class="section-title"><span><i class="fa-solid fa-user-astronaut"></i></span> About & Education</h2>
+      <div class="about-grid">
+        <div class="glass-card about-text">
+          <p>
+            I am a Master of Engineering student in Electrical and Computer Engineering at the
+            <strong>University of Ottawa</strong>, specializing in Machine Learning, NLP, and data analysis. With
+            hands-on experience, I thrive on solving complex real-world problems.
+          </p>
+        </div>
+        <div class="glass-card education-card">
+          <div class="edu-item">
+            <i class="fa-solid fa-graduation-cap edu-icon"></i>
+            <div>
+              <h3>University of Ottawa</h3>
+              <p class="highlight">Master of Engineering, ECE</p>
+              <span class="date">Sept 2024 – May 2026</span>
+            </div>
+          </div>
+          <div class="edu-item">
+            <i class="fa-solid fa-university edu-icon"></i>
+            <div>
+              <h3>Queen Mary Univ. of London & BUPT</h3>
+              <p class="highlight">B.Eng, Telecommunication Engineering</p>
+              <span class="date">Sept 2020 – Jul 2024</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <h2 class="section-title"><span><i class="fa-solid fa-briefcase"></i></span> Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item glass-card">
+          <div class="timeline-dot"></div>
+          <span class="date">Jul 2023 – Sept 2023</span>
+          <h3>NLP Algorithm Intern</h3>
+          <h4 class="highlight">Emotibot Technology</h4>
+          <ul>
+            <li>Fine-tuned the LLaMA model using QLoRA to optimize chatbot performance.</li>
+            <li>Conducted hyperparameter tuning and implemented quantization for deployment.</li>
+            <li>Improved dialog accuracy and user experience by refining ML models.</li>
+          </ul>
+        </div>
+        <div class="timeline-item glass-card">
+          <div class="timeline-dot"></div>
+          <span class="date">May 2023 – Jun 2023</span>
+          <h3>NLP Engineer Intern</h3>
+          <h4 class="highlight">Magic Data</h4>
+          <ul>
+            <li>Used prompting techniques to optimize LLM outputs and assessed application capabilities.</li>
+            <li>Evaluated model performance to develop best generation strategies.</li>
+          </ul>
+        </div>
+        <div class="timeline-item glass-card">
+          <div class="timeline-dot"></div>
+          <span class="date">Nov 2023 – Apr 2024</span>
+          <h3>Sentiment Analysis Researcher</h3>
+          <h4 class="highlight">Text and Speech Modalities</h4>
+          <ul>
+            <li>Developed dual-modality analysis using Logistic Regression and Random Forest.</li>
+            <li>Built an interactive GUI with tkinter achieving ~93% text classification accuracy.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section projects">
+      <h2 class="section-title"><span><i class="fa-solid fa-code"></i></span> Projects</h2>
+      <div class="projects-layout">
+        <div class="filter-buttons glass-card">
+          <button class="filter-btn active" data-filter="ml"><i class="fa-solid fa-brain"></i> ML / NLP</button>
+          <button class="filter-btn" data-filter="chatbot"><i class="fa-solid fa-robot"></i> Chatbots</button>
+          <button class="filter-btn" data-filter="system"><i class="fa-solid fa-server"></i> Systems</button>
+        </div>
+        
         <div class="projects-container">
-          <div class="project-item" data-category="ml">
-            <h3>Tweets Classifier (2025.01 – 2025.02)</h3>
+          <div class="project-item glass-card" data-category="ml">
+            <div class="project-header">
+              <h3>Tweets Classifier</h3>
+              <span class="project-date">Jan 2025 – Feb 2025</span>
+            </div>
             <ul>
-              <li>Built a multi-algorithm ML system for customer complaint classification using SVM, Random Forest, KNN, Naive Bayes, SGD, and XGBoost.</li>
-              <li>Developed a reusable pipeline for data preprocessing, model training, and evaluation using Python.</li>
-              <li>Conducted 10-fold cross-validation with TF-IDF features and evaluated performance metrics (accuracy, precision, recall, F1-score).</li>
-              <li>Visualized results using confusion matrices and class distributions for deeper insights.</li>
+              <li>Multi-algorithm customer complaint classification (SVM, RF, KNN, Naive Bayes, XGBoost).</li>
+              <li>Developed reusable pipeline for preprocessing and evaluation using 10-fold cross-validation.</li>
             </ul>
           </div>
-          <div class="project-item" data-category="chatbot">
-            <h3>Mock Interview Chatbot (2024.10 – 2024.12)</h3>
+          <div class="project-item glass-card" data-category="chatbot">
+            <div class="project-header">
+              <h3>Mock Interview Chatbot</h3>
+              <span class="project-date">Oct 2024 – Dec 2024</span>
+            </div>
             <ul>
-              <li>
-                Proposed and implemented a mock interview chatbot concept using fine-tuned open source models.
-              </li>
-              <li>
-                Led the team in research, model selection, and regular progress meetings, improving collaboration and project outcomes.
-              </li>
-              <li>Enhanced coding proficiency in Python and gained experience in model training for conversational AI.</li>
+              <li>Implemented a mock interview concept using fine-tuned open-source models.</li>
+              <li>Led team research, model selection, and conversational AI training in Python.</li>
             </ul>
             <div class="project-image">
               <img src="assets/images/botlogo.png" alt="Bot Logo" />
             </div>
           </div>
-          <div class="project-item" data-category="chatbot">
-            <h3>News Recommendation Chatbot System</h3>
+          <div class="project-item glass-card" data-category="chatbot">
+            <div class="project-header">
+              <h3>News Recommendation Bot</h3>
+            </div>
             <ul>
-              <li>A comprehensive text analysis and recommendation system for news articles combining clustering, classification, and collaborative filtering.</li>
-              <li>Provides personalized news recommendations through an interactive chatbot interface.</li>
+              <li>Comprehensive text analysis and recommendation system for news articles.</li>
+              <li>Combines clustering, classification, and collaborative filtering.</li>
             </ul>
           </div>
-          <div class="project-item" data-category="ml">
-            <h3>A Serious Game of Math</h3>
+          <div class="project-item glass-card" data-category="system">
+            <div class="project-header">
+              <h3>Student Achievement System</h3>
+              <span class="project-date">Aug 2022 – Dec 2022</span>
+            </div>
             <ul>
-              <li>An interactive math game built with Python and Large Language Models (LLM).</li>
-              <li>Challenges players to solve math problems as fast as possible.</li>
-            </ul>
-          </div>
-          <div class="project-item" data-category="system">
-            <h3>Student Achievement Management System (2022.08 – 2022.12)</h3>
-            <ul>
-              <li>
-                Developed a Java-based application for recording and managing student achievements.
-              </li>
-              <li>
-                Utilized advanced data manipulation techniques and agile development methods.
-              </li>
+              <li>Developed a Java-based application for managing student achievements.</li>
+              <li>Utilized advanced data manipulation and agile development methods.</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
-    <!-- Certifications Section -->
-    <section id="certifications" class="section certifications">
-      <h2>Certifications</h2>
-      <div class="certification-item">
-        <h3>IBM Data Analyst &mdash; IBM</h3>
-        <p>Issued March 2026 &bull; Skills: SQL, Data Analysis</p>
-      </div>
-      <div class="certification-item">
-        <h3>IBM Machine Learning Specialization &mdash; IBM</h3>
-        <p>Issued February 2025 &bull; Skills: Machine Learning, Data Science</p>
-      </div>
-    </section>
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-      <h2>Contact</h2>
-      <div class="contact-details">
-        <p><strong>Email:</strong> <a href="mailto:flin025@uottawa.ca">flin025@uottawa.ca</a></p>
-        <p><strong>Mobile:</strong> +1 (343) 368-7929</p>
-        <p><strong>Address:</strong> 800 King Edward Avenue, Ottawa, Ontario, Canada, K1N 6N5</p>
-        <p>
-          <strong>LinkedIn:</strong>
-          <a href="https://www.linkedin.com/in/fangyuanlin/" target="_blank">Fangyuan Lin</a>
-        </p>
-        <p>
-          <strong>GitHub:</strong>
-          <a href="https://github.com/Fangyuan025" target="_blank">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub" width="30" height="30" />
-          </a>
-        </p>
-      </div>
-      <div class="feedback-form">
-        <h3>Feedback</h3>
-        <form id="feedback-form" action="https://formspree.io/f/mkgopyqr" method="POST">
-          <div class="form-group">
-            <label for="first-name">First Name:</label>
-            <input type="text" id="first-name" name="first-name" required />
+
+    <section id="contact" class="section">
+      <h2 class="section-title"><span><i class="fa-regular fa-paper-plane"></i></span> Get In Touch</h2>
+      <div class="contact-grid">
+        
+        <div class="contact-info glass-card">
+          <h3>Contact Info</h3>
+          <ul class="info-list">
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:flin025@uottawa.ca">flin025@uottawa.ca</a></li>
+            <li><i class="fa-solid fa-phone"></i> +1 (343) 368-7929</li>
+            <li><i class="fa-solid fa-location-dot"></i> Ottawa, ON, Canada</li>
+          </ul>
+          
+          <h3 class="mt-4">Certifications</h3>
+          <ul class="cert-list">
+            <li><i class="fa-brands fa-ibm"></i> <strong>IBM Data Analyst</strong> (Mar 2026)</li>
+            <li><i class="fa-brands fa-ibm"></i> <strong>IBM ML Specialization</strong> (Feb 2025)</li>
+          </ul>
+
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/fangyuanlin/" target="_blank" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/Fangyuan025" target="_blank" class="social-btn"><i class="fa-brands fa-github"></i></a>
           </div>
-          <div class="form-group">
-            <label for="last-name">Last Name:</label>
-            <input type="text" id="last-name" name="last-name" required />
+        </div>
+
+        <div class="feedback-form glass-card">
+          <h3>Send a Message</h3>
+          <form id="feedback-form" action="https://formspree.io/f/mkgopyqr" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <input type="text" id="first-name" name="first-name" placeholder="First Name" required />
+              </div>
+              <div class="form-group">
+                <input type="text" id="last-name" name="last-name" placeholder="Last Name" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" placeholder="Email Address" required />
+            </div>
+            <div class="form-group">
+              <textarea id="message" name="message" rows="4" placeholder="Your Message..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+          </form>
+          <div id="feedback-response" style="display:none" class="success-msg">
+            <i class="fa-solid fa-circle-check"></i> Thank you! Message sent.
           </div>
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div class="form-group">
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          <button type="submit">Send Feedback</button>
-        </form>
-        <div id="feedback-response" style="display:none">
-          <p>Thank you for your feedback!</p>
         </div>
       </div>
     </section>
+
     <footer>
-      <p>&copy; 2025 Fangyuan Lin. All rights reserved.</p>
+      <p>&copy; 2025 Fangyuan Lin. Designed for the Future.</p>
     </footer>
+
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/particles.js"></script>
     <script>
       let isFormSubmitted = false;
       document.getElementById('feedback-form').addEventListener('submit', function(event) {
@@ -232,25 +241,15 @@
         fetch(form.action, {
           method: form.method,
           body: data,
-          headers: {
-            'Accept': 'application/json'
-          }
+          headers: { 'Accept': 'application/json' }
         }).then(response => {
           if (response.ok) {
             document.getElementById('feedback-form').reset();
             document.getElementById('feedback-response').style.display = 'block';
             isFormSubmitted = true;
-            setTimeout(() => {
-              isFormSubmitted = false;
-            }, 30000);
+            setTimeout(() => { isFormSubmitted = false; }, 30000);
           } else {
-            response.json().then(data => {
-              if (Object.hasOwn(data, 'errors')) {
-                alert(data["errors"].map(error => error["message"]).join(", "));
-              } else {
-                alert('Oops! There was a problem submitting your form');
-              }
-            });
+            alert('Oops! There was a problem submitting your form');
           }
         }).catch(error => {
           alert('Oops! There was a problem submitting your form');
