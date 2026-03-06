@@ -18,6 +18,7 @@
           <li><a href="#education">Éducation</a></li>
           <li><a href="#experience">Expérience</a></li>
           <li><a href="#projects">Projets</a></li>
+          <li><a href="#certifications">Certifications</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a id="language-toggle" href="index.html">En</a></li>
         </ul>
@@ -28,7 +29,6 @@
         </div>
       </nav>
     </header>
-
     <!-- Hero Section with Particle Canvas -->
     <section id="hero" class="hero">
       <canvas id="particle-canvas"></canvas>
@@ -40,39 +40,42 @@
         <a href="#about" class="btn">En savoir plus</a>
       </div>
     </section>
-
     <!-- About Section -->
     <section id="about" class="section about">
       <h2>À propos de moi</h2>
       <p>
-        Je suis un ingénieur autodidacte passionné par le développement de pipelines ML modulaires et prêts pour la production.
-        Que ce soit pour affiner des modèles de pointe ou concevoir des expériences web dynamiques,
-        je suis toujours prêt à relever un défi!
+        Je suis étudiant en Master en génie électrique et informatique à l'Université d'Ottawa, spécialisé en apprentissage automatique, traitement du langage naturel et analyse de données. Grâce à mon expérience pratique, je m'épanouis dans la résolution de problèmes complexes du monde réel!
       </p>
     </section>
-
     <!-- Education Section -->
     <section id="education" class="section education">
       <h2>Éducation</h2>
       <div class="education-item">
         <h3>Université d'Ottawa</h3>
-        <p>Master en ingénierie, génie électrique et informatique (2024.09 – Présent)</p>
+        <p>Master en ingénierie, génie électrique et informatique (2024.09 – 2026.05)</p>
       </div>
       <div class="education-item">
         <h3>Queen Mary University of London &amp; Beijing University of Posts and Telecommunications</h3>
         <p>Bachelor en ingénierie, ingénierie des télécommunications et gestion (2020.09 – 2024.07)</p>
       </div>
     </section>
-
     <!-- Experience Section -->
     <section id="experience" class="section experience">
       <h2>Expérience</h2>
       <div class="experience-item">
-        <h3>Application pour classifier les plaintes des clients (2025.01 – Actuel)</h3>
+        <h3>Stagiaire en algorithme NLP, Emotibot Technology (2023.07 – 2023.09)</h3>
         <ul>
-          <li>Construit un système ML multi-algorithmes en utilisant SVM, Random Forest, KNN, Naive Bayes, SGD et XGBoost.</li>
-          <li>Développé un pipeline de données réutilisable pour le prétraitement, la formation et l'évaluation en Python.</li>
-          <li>Réalisé une validation croisée à 10 plis avec des caractéristiques TF-IDF et visualisé les résultats.</li>
+          <li>Affiné le modèle LLaMA en utilisant QLoRA pour optimiser les performances d'une application de chatbot.</li>
+          <li>Réalisé le réglage des hyperparamètres, l'évaluation du modèle et implémenté des techniques de quantification pour un déploiement efficace.</li>
+          <li>Amélioré la précision des dialogues et l'expérience utilisateur en testant et en affinant les modèles ML.</li>
+          <li>Acquis une expérience pratique dans l'affinage de modèles et le déploiement d'applications réelles.</li>
+        </ul>
+      </div>
+      <div class="experience-item">
+        <h3>Ingénieur NLP Stagiaire, Magic Data (2023.05 – 2023.06)</h3>
+        <ul>
+          <li>Utilisé des techniques de prompting pour optimiser la sortie des grands modèles de langage (LLM) et réalisé des évaluations de capacités au niveau applicatif.</li>
+          <li>Optimisé manuellement les résultats et évalué les performances du modèle pour développer la meilleure stratégie de génération.</li>
         </ul>
       </div>
       <div class="experience-item">
@@ -83,13 +86,6 @@
         </ul>
       </div>
       <div class="experience-item">
-        <h3>Stagiaire en algorithme NLP, Emotibot Technology (2023.07 – 2023.09)</h3>
-        <ul>
-          <li>Affiné le modèle LLaMA en utilisant QLoRA et implémenté la quantification pour le déploiement de chatbots.</li>
-          <li>Amélioré la précision des dialogues et l'expérience utilisateur grâce à des tests continus du modèle.</li>
-        </ul>
-      </div>
-      <div class="experience-item">
         <h3>Participant indépendant, Analyse des sentiments dans l'éducation en ligne (2023.01 – 2023.08)</h3>
         <ul>
           <li>Recherche et implémentation de l'analyse des sentiments en utilisant les techniques SVM et RNN.</li>
@@ -97,45 +93,72 @@
         </ul>
       </div>
     </section>
-
-    <!-- Projects Section with Left-side Vertical Sub Navigation -->
+    <!-- Projects Section -->
     <section id="projects" class="section projects">
       <h2>Projets</h2>
       <div class="projects-layout">
         <div class="filter-buttons">
-          <button class="filter-btn active" data-filter="chatbot">Chatbot</button>
+          <button class="filter-btn active" data-filter="ml">IA / NLP</button>
+          <button class="filter-btn" data-filter="chatbot">Chatbot</button>
           <button class="filter-btn" data-filter="system">Système</button>
         </div>
         <div class="projects-container">
+          <div class="project-item" data-category="ml">
+            <h3>Classificateur de tweets (2025.01 – 2025.02)</h3>
+            <ul>
+              <li>Construit un système ML multi-algorithmes pour la classification des plaintes clients utilisant SVM, Random Forest, KNN, Naive Bayes, SGD et XGBoost.</li>
+              <li>Développé un pipeline réutilisable pour le prétraitement des données, la formation et l'évaluation en Python.</li>
+              <li>Réalisé une validation croisée à 10 plis avec des caractéristiques TF-IDF et évalué les métriques de performance (précision, rappel, F1-score).</li>
+              <li>Visualisé les résultats avec des matrices de confusion et des distributions de classes.</li>
+            </ul>
+          </div>
           <div class="project-item" data-category="chatbot">
             <h3>Chatbot d'entretien simulé (2024.10 – 2024.12)</h3>
             <ul>
-              <li>
-                Implémenté un chatbot en utilisant des modèles open source affinés pour simuler des scénarios d'entretien.
-              </li>
-              <li>
-                Dirigé la sélection des modèles et la collaboration d'équipe pour une pratique d'entretien innovante.
-              </li>
+              <li>Proposé et implémenté un concept de chatbot d'entretien simulé en utilisant des modèles open source affinés.</li>
+              <li>Dirigé l'équipe dans la recherche, la sélection de modèles et les réunions de suivi, améliorant la collaboration.</li>
+              <li>Renforcé la maîtrise de Python et acquis une expérience en formation de modèles pour l'IA conversationnelle.</li>
             </ul>
             <div class="project-image">
               <img src="assets/images/botlogo.png" alt="Bot Logo" />
             </div>
           </div>
+          <div class="project-item" data-category="chatbot">
+            <h3>Système de recommandation de nouvelles par chatbot</h3>
+            <ul>
+              <li>Système complet d'analyse de texte et de recommandation pour articles d'actualité combinant clustering, classification et filtrage collaboratif.</li>
+              <li>Fournit des recommandations personnalisées via une interface chatbot interactive.</li>
+            </ul>
+          </div>
+          <div class="project-item" data-category="ml">
+            <h3>Un jeu sérieux de mathématiques</h3>
+            <ul>
+              <li>Un jeu de mathématiques interactif développé avec Python et des grands modèles de langage (LLM).</li>
+              <li>Met les joueurs au défi de résoudre des problèmes mathématiques le plus rapidement possible.</li>
+            </ul>
+          </div>
           <div class="project-item" data-category="system">
             <h3>Système de gestion des réalisations des étudiants (2022.08 – 2022.12)</h3>
             <ul>
-              <li>
-                Développé une application Java pour enregistrer et gérer les réalisations des étudiants.
-              </li>
-              <li>
-                Utilisé des techniques avancées de manipulation de données et des méthodes de développement agile.
-              </li>
+              <li>Développé une application Java pour enregistrer et gérer les réalisations des étudiants.</li>
+              <li>Utilisé des techniques avancées de manipulation de données et des méthodes de développement agile.</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
-
+    <!-- Certifications Section -->
+    <section id="certifications" class="section certifications">
+      <h2>Certifications</h2>
+      <div class="certification-item">
+        <h3>IBM Data Analyst &mdash; IBM</h3>
+        <p>Délivré en mars 2026 &bull; Compétences : SQL, Analyse de données</p>
+      </div>
+      <div class="certification-item">
+        <h3>IBM Machine Learning Specialization &mdash; IBM</h3>
+        <p>Délivré en février 2025 &bull; Compétences : Apprentissage automatique, Science des données</p>
+      </div>
+    </section>
     <!-- Contact Section -->
     <section id="contact" class="section contact">
       <h2>Contact</h2>
@@ -145,7 +168,7 @@
         <p><strong>Adresse:</strong> 800 King Edward Avenue, Ottawa, Ontario, Canada, K1N 6N5</p>
         <p>
           <strong>LinkedIn:</strong>
-          <a href="https://www.linkedin.com/in/fangyuan-lin-4b51b1336/" target="_blank">Fangyuan Lin</a>
+          <a href="https://www.linkedin.com/in/fangyuanlin/" target="_blank">Fangyuan Lin</a>
         </p>
         <p>
           <strong>GitHub:</strong>
@@ -173,36 +196,27 @@
             <label for="message">Message:</label>
             <textarea id="message" name="message" rows="5" required></textarea>
           </div>
-          <div class="form-group button-group">
-            <button type="submit" class="btn">Envoyer des commentaires</button>
-          </div>
+          <button type="submit">Envoyer des commentaires</button>
         </form>
-        <div id="feedback-response" style="display:none; color: #0af; text-align: center; margin-top: 1rem;">
-          Merci pour votre retour!
+        <div id="feedback-response" style="display:none">
+          <p>Merci pour votre retour!</p>
         </div>
       </div>
     </section>
-
     <footer>
       <p>&copy; 2025 Fangyuan Lin. All rights reserved.</p>
     </footer>
-
-    <script src="assets/js/particles.js"></script>
     <script src="assets/js/main.js"></script>
     <script>
       let isFormSubmitted = false;
-
       document.getElementById('feedback-form').addEventListener('submit', function(event) {
         event.preventDefault();
-
         if (isFormSubmitted) {
           alert('Vous avez déjà soumis le formulaire. Veuillez patienter avant de soumettre à nouveau.');
           return;
         }
-
         var form = event.target;
         var data = new FormData(form);
-
         fetch(form.action, {
           method: form.method,
           body: data,
@@ -216,7 +230,7 @@
             isFormSubmitted = true;
             setTimeout(() => {
               isFormSubmitted = false;
-            }, 30000); // 30 seconds cooldown
+            }, 30000);
           } else {
             response.json().then(data => {
               if (Object.hasOwn(data, 'errors')) {
