@@ -36,58 +36,52 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // Projects filtering functionality with improved smooth transitions
+// Projects filtering functionality with improved smooth transitions
   const filterButtons = document.querySelectorAll(".filter-btn");
   const projectItems = document.querySelectorAll(".project-item");
-  let transitionDuration = 800; // duration in milliseconds
+  const transitionDuration = 400; // 400ms to match the CSS transition
 
-  // Set default filter to 'chatbot' on load by hiding non-chatbot items
+  // Set default filter to 'ml' on load
   projectItems.forEach(item => {
-    if (item.getAttribute("data-category") !== "chatbot") {
+    if (item.getAttribute("data-category") !== "ml") {
       item.style.display = "none";
+      item.classList.add("fade-out");
     } else {
+      item.style.display = "flex";
       item.classList.add("fade-in");
     }
   });
 
   filterButtons.forEach(btn => {
-    btn.addEventListener("mouseenter", function() {
-      // Remove active class from all buttons and set active class for current button
+    // Trigger on 'click' instead of 'mouseenter' to prevent rapid-fire glitching
+    btn.addEventListener("click", function() {
+      if (this.classList.contains("active")) return; // Do nothing if clicking the already active button
+
+      // Update button active states
       filterButtons.forEach(button => button.classList.remove("active"));
       this.classList.add("active");
 
       const filter = this.getAttribute("data-filter");
-      let hidePromises = [];
 
-      // Fade out items that don't match the new filter
       projectItems.forEach(item => {
-        if (item.getAttribute("data-category") !== filter && item.style.display !== "none") {
-          item.classList.remove("fade-in");
-          item.classList.add("fade-out");
-          // Create promise that resolves after the transitionDuration
-          hidePromises.push(new Promise(resolve => setTimeout(resolve, transitionDuration)));
-        }
-      });
+        // 1. Fade everything out first
+        item.classList.remove("fade-in");
+        item.classList.add("fade-out");
 
-      // After fade-out finishes, update the items
-      Promise.all(hidePromises).then(() => {
-        projectItems.forEach(item => {
+        // 2. Wait for the fade-out animation to finish, then swap displays and fade in
+        setTimeout(() => {
           if (item.getAttribute("data-category") === filter) {
-            // For items that were hidden, set them to display block and initialize them with fade-out first
-            if (item.style.display === "none") {
-              item.style.display = "block";
-              item.classList.remove("fade-in", "fade-out");
-              item.classList.add("fade-out");
-              // Force reflow to ensure the transition is applied
-              void item.offsetWidth;
-            }
-            // Now remove fade-out and add fade-in for a smooth transition
+            item.style.display = "flex"; 
+            
+            // Force browser reflow so the display change registers before fading in
+            void item.offsetWidth;
+            
             item.classList.remove("fade-out");
             item.classList.add("fade-in");
           } else {
             item.style.display = "none";
           }
-        });
+        }, transitionDuration);
       });
     });
   });
