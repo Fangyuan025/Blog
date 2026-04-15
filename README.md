@@ -37,25 +37,6 @@ The repository includes a `CNAME` file configured for:
 - **Vanilla JavaScript** (`assets/js/main.js`)
 - **Three.js** (loaded from CDN for hero visualization)
 
-## Project Structure
-
-```text
-repository-root/
-â”œâ”€â”€ CNAME
-â”œâ”€â”€ index.html
-â””â”€â”€ assets/
-    â”œâ”€â”€ css/
-    â”‚   â””â”€â”€ style.css
-    â”œâ”€â”€ i18n.json
-    â”œâ”€â”€ images/
-    â”‚   â”œâ”€â”€ botlogo.png
-    â”‚   â””â”€â”€ favicon.png
-    â””â”€â”€ js/
-        â”œâ”€â”€ main.js
-        â”œâ”€â”€ particles.js
-        â””â”€â”€ three-hero.js
-```
-
 ## Running Locally
 
 Because this is a static website, you can serve it with any local static server.
