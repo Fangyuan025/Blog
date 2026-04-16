@@ -28,6 +28,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
@@ -37,6 +39,8 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  width: 100%;
+  max-width: 100vw;
 }
 
 /* ===== HEADER / NAV ===== */
@@ -67,6 +71,11 @@ nav {
   justify-content: space-between;
   align-items: center;
   height: 64px;
+}
+
+nav .logo {
+  position: relative;
+  z-index: 1001;
 }
 
 nav .logo h1 {
@@ -121,6 +130,7 @@ nav .logo h1 {
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
+  position: relative;
   z-index: 1001;
 }
 
@@ -156,8 +166,10 @@ nav .logo h1 {
 .hero-content {
   position: relative;
   z-index: 2;
+  width: 100%;
   max-width: 720px;
-  padding: 0 2rem;
+  min-width: 0;
+  padding: 0 1.5rem;
   opacity: 0;
   transform: translateY(24px);
   animation: slideUp 0.8s ease 0.3s forwards;
@@ -171,12 +183,15 @@ nav .logo h1 {
 }
 
 .hero h2 {
-  font-size: 3rem;
+  font-size: clamp(1.75rem, 6vw, 3rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--text);
   margin-bottom: 1rem;
-  min-height: 3.6rem;
+  min-height: 1.2em;
+  line-height: 1.2;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 #typewriter::after {
@@ -198,10 +213,11 @@ nav .logo h1 {
 }
 
 .subtitle {
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   color: var(--text-muted);
-  line-height: 1.8;
+  line-height: 1.7;
   margin-bottom: 2rem;
+  word-wrap: break-word;
 }
 
 .subtitle strong {
@@ -221,6 +237,7 @@ nav .logo h1 {
   overflow: hidden;
   width: 100%;
   max-width: 600px;
+  min-width: 0;
   margin: 0 auto;
   mask-image: linear-gradient(
     to right,
@@ -936,12 +953,20 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+  header {
+    padding: 0 1rem;
+  }
+
   .nav-links {
     position: fixed;
     right: 0;
     top: 0;
-    background: rgba(9, 9, 11, 0.98);
-    backdrop-filter: blur(20px);
+    background-color: #09090b;
+    background-image: radial-gradient(
+      circle at top right,
+      rgba(129, 140, 248, 0.08),
+      transparent 60%
+    );
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -966,18 +991,15 @@ a:hover {
     display: flex;
   }
 
-  .hero h2 {
-    font-size: 2rem;
-  }
-
-  .subtitle {
-    font-size: 0.95rem;
-  }
-
   .hero-buttons {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     gap: 0.75rem;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    text-align: center;
   }
 
   .section {
@@ -988,9 +1010,14 @@ a:hover {
     font-size: 1.5rem;
   }
 
+  .bento-card {
+    padding: 1.25rem;
+  }
+
   .bento-wide-inner {
     flex-direction: column;
     text-align: left;
+    align-items: flex-start;
   }
 
   .chatbot-icon {
@@ -1002,6 +1029,79 @@ a:hover {
   }
 
   .timeline {
-    padding-left: 2rem;
+    padding-left: 1.75rem;
+  }
+
+  .timeline-dot {
+    left: -1.75rem;
+    width: 12px;
+    height: 12px;
+  }
+
+  .timeline-item h3 {
+    font-size: 1rem;
+  }
+
+  .project-info h3 {
+    font-size: 1.05rem;
+  }
+
+  .terminal-mockup {
+    min-height: 200px;
+  }
+
+  .terminal-body {
+    font-size: 0.7rem;
+  }
+
+  .feedback-form {
+    padding: 1.5rem;
+  }
+
+  footer {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 0 1.25rem;
+  }
+
+  .hero-buttons {
+    margin-bottom: 1.75rem;
+  }
+
+  .tech-marquee-track span {
+    font-size: 0.72rem;
+  }
+
+  .section {
+    padding: 3.5rem 1rem;
+  }
+
+  .edu-card,
+  .bento-card {
+    padding: 1.1rem;
+  }
+
+  .timeline-item li,
+  .project-info li,
+  .bento-wide li {
+    font-size: 0.85rem;
+  }
+
+  .stack-grid {
+    gap: 0.35rem;
+  }
+
+  .stack-item {
+    font-size: 0.68rem;
+    padding: 0.25rem 0.55rem;
+  }
+
+  .badge {
+    font-size: 0.68rem;
+    padding: 0.25rem 0.6rem;
   }
 }
