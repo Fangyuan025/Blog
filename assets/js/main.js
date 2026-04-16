@@ -214,6 +214,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // ===== Chat Preview Replay (Interview Chatbot) =====
+  var chatPreview = document.getElementById("chat-preview");
+  if (chatPreview) {
+    var chatBubbles = chatPreview.querySelectorAll(".chat-bubble");
+    var chatObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            chatBubbles.forEach(function (b) {
+              b.style.animation = "none";
+              // Force reflow so the animation can restart
+              void b.offsetWidth;
+              b.style.animation = "";
+            });
+          }
+        });
+      },
+      { threshold: 0.35 }
+    );
+    chatObserver.observe(chatPreview);
+  }
+
   // ===== Slime Mascot (Math Adventure easter egg) =====
   var slimeMascot = document.getElementById("slime-mascot");
   if (slimeMascot) {
