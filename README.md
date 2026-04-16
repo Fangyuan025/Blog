@@ -1,81 +1,115 @@
-# Fangyuan Lin Portfolio Website
+# Fangyuan Lin — Portfolio
 
-A modern single-page personal portfolio site built with vanilla HTML, CSS, and JavaScript, featuring smooth animations, bilingual content (English/French), and a 3D interactive hero section.
+A modern, bilingual single-page portfolio built with vanilla HTML, CSS, and JavaScript. Features a Linear-inspired dark UI, a Three.js neural-network hero, a Bento Grid project showcase, and an animated terminal mockup.
 
-## Overview
+Live site: **[www.fangyuanlin.com](https://www.fangyuanlin.com)**
 
-This repository contains the source for a static portfolio website that highlights:
+---
 
-- Professional profile and education
-- Timeline-based experience
-- Featured and supporting projects
-- Contact details and feedback form
+## Highlights
 
-The site is designed to be lightweight, responsive, and deployment-friendly (GitHub Pages ready).
+- **Linear-style dark aesthetic** — `#09090b` canvas, muted indigo accent (`#818cf8`), Inter + JetBrains Mono typography
+- **3D hero visualization** — Three.js neural-network cloud (80 nodes + edges + wireframe icosahedron) that tracks mouse movement
+- **Bilingual UI (EN / FR)** — JSON-driven i18n via `data-i18n` attributes, no reload required
+- **Bento Grid project layout** — responsive CSS Grid with featured card + supporting tiles
+- **Animated terminal mockup** — typewriter-driven live demo card for the *Dead Static* project
+- **Timeline experience section** — dots + dates + card layout for work history
+- **Typewriter intro, scroll-reveal animations, scrollspy, mobile menu**
+- **Formspree-powered feedback form**
+- **Mobile-first responsive design** with `clamp()` typography and overflow-safe flex layouts
 
-## Live Domain
+---
 
-The repository includes a `CNAME` file configured for:
+## Project Structure
 
-- `www.fangyuanlin.com`
+```
+Blog/
+├── index.html            # Single-page markup, data-i18n tagged
+├── CNAME                 # Custom domain (www.fangyuanlin.com)
+├── README.md
+└── assets/
+    ├── css/
+    │   └── style.css     # Design tokens, Bento Grid, timeline, responsive rules
+    ├── js/
+    │   ├── main.js       # i18n, typewriter, scrollspy, mobile menu, form handler
+    │   ├── three-hero.js # Three.js hero scene (nodes, edges, icosahedron)
+    │   └── particles.js
+    ├── i18n.json         # EN / FR translations
+    └── images/
+```
 
-## Key Features
-
-- **Responsive navigation** with mobile menu and active section highlighting
-- **Bilingual UI** (EN/FR) powered by `assets/i18n.json`
-- **Hero animations**:
-  - Typewriter intro text
-  - Three.js neural-network-style 3D background
-- **Scroll-based reveal effects** for sections
-- **Project showcase** with animated terminal mockup
-- **Integrated feedback form** via Formspree
+---
 
 ## Tech Stack
 
-- **HTML5** (`index.html`)
-- **CSS3** (`assets/css/style.css`)
-- **Vanilla JavaScript** (`assets/js/main.js`)
-- **Three.js** (loaded from CDN for hero visualization)
+| Layer         | Tool                                        |
+| ------------- | ------------------------------------------- |
+| Markup        | HTML5                                       |
+| Styling       | CSS3 (custom properties, Grid, Flex, clamp) |
+| Scripting     | Vanilla JavaScript (ES2015+)                |
+| 3D Graphics   | [Three.js](https://threejs.org/) (CDN)      |
+| Fonts         | Inter, JetBrains Mono (Google Fonts)        |
+| Form backend  | [Formspree](https://formspree.io/)          |
+| Hosting       | GitHub Pages                                |
+
+No build step, no framework, no bundler — just open `index.html`.
+
+---
 
 ## Running Locally
 
-Because this is a static website, you can serve it with any local static server.
+Any static file server works.
 
-### Option 1: Python
+### Python
 
 ```bash
-cd /path/to/repository-root
 python3 -m http.server 8000
+# then open http://localhost:8000
 ```
 
-Then open `http://localhost:8000`.
+### Node
 
-### Option 2: VS Code Live Server
+```bash
+npx serve -l 3000 .
+# then open http://localhost:3000
+```
 
-Open the repository in VS Code and launch `index.html` with the Live Server extension.
+### VS Code
 
-## Customization Guide
+Install the **Live Server** extension and click "Go Live".
 
-### 1) Update content
+---
 
-- Edit section content in: `index.html`
-- Update translatable strings in: `assets/i18n.json`
+## Customization
 
-### 2) Update styling
+| What to change       | Where                               |
+| -------------------- | ----------------------------------- |
+| Copy / sections      | `index.html`                        |
+| EN / FR translations | `assets/i18n.json`                  |
+| Design tokens, layout| `assets/css/style.css` (`:root`)    |
+| UI interactions      | `assets/js/main.js`                 |
+| 3D hero scene        | `assets/js/three-hero.js`           |
+| Accent color         | `--accent` in `style.css`           |
 
-- Modify design tokens, layout, and component styles in: `assets/css/style.css`
+### Adding a translation key
 
-### 3) Update interactions
+1. Add a `data-i18n="my.key"` attribute to the element in `index.html`.
+2. Add `"my.key": "..."` entries under both `en` and `fr` in `assets/i18n.json`.
 
-- Main UI behavior (language toggle, scrollspy, form handling): `assets/js/main.js`
-- 3D hero effect: `assets/js/three-hero.js`
+---
 
 ## Deployment
 
-This project is suitable for static hosting providers such as:
+The repo is GitHub Pages–ready:
 
-- GitHub Pages
-- Netlify
-- Vercel (static output)
+1. Push to `main`.
+2. In repository settings, enable Pages from the `main` branch root.
+3. Keep `CNAME` for the custom domain (or delete it for the default `*.github.io` URL).
 
-For GitHub Pages, ensure `index.html` remains at the repository root and keep `CNAME` if using a custom domain.
+Also deployable as-is to Netlify, Vercel (static), or Cloudflare Pages.
+
+---
+
+## License
+
+Personal portfolio — content © Fangyuan Lin. Feel free to use the structure as a reference for your own site.
