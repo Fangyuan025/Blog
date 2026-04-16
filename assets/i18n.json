@@ -54,6 +54,7 @@
     "proj_chatbot_short": "Fine-tuned open-source models to simulate realistic interview scenarios. Led model selection, prompt design, and collaboration.",
     "proj_chatbot_chat_q1": "Walk me through a challenging bug you solved recently.",
     "proj_chatbot_chat_a1": "Sure — I hit a race condition between two async workers sharing a cache…",
+    "proj_chatbot_chat_q2": "Great example. How did you isolate the race in logs before you had a repro?",
     "proj_math_title": "Math Adventure: Gamified Learning",
     "proj_math_meta": "Solo Developer | Python · Pygame · Local LLM",
     "proj_math_li1": "Built an <strong>RPG-style math quiz</strong> where players defeat monsters across 5 themed levels via turn-based arithmetic combat.",
@@ -75,7 +76,7 @@
     "feedback_message": "Message:",
     "feedback_send": "Send Feedback",
     "feedback_thanks": "Thank you for your feedback!",
-    "footer_text": "&copy; 2025 Fangyuan Lin. All rights reserved."
+    "footer_text": "&copy; 2026 Fangyuan Lin. All rights reserved."
   },
   "fr": {
     "nav_home": "Accueil",
@@ -132,6 +133,7 @@
     "proj_chatbot_short": "Modèles open-source ajustés pour simuler des scénarios d'entretien réalistes. Direction de la sélection de modèles, du prompt design et de la collaboration.",
     "proj_chatbot_chat_q1": "Décrivez un bug complexe que vous avez résolu récemment.",
     "proj_chatbot_chat_a1": "Bien sûr — une race condition entre deux workers async partageant un cache…",
+    "proj_chatbot_chat_q2": "Bel exemple. Comment avez-vous isolé la race dans les logs avant d'avoir un repro ?",
     "proj_math_title": "Math Adventure : apprentissage ludifié",
     "proj_math_meta": "Développeur solo | Python · Pygame · LLM local",
     "proj_math_li1": "Créé un <strong>quiz de maths style RPG</strong> où le joueur bat des monstres sur 5 niveaux thématiques via des combats arithmétiques au tour par tour.",
@@ -153,6 +155,6 @@
     "feedback_message": "Message :",
     "feedback_send": "Envoyer",
     "feedback_thanks": "Merci pour votre retour !",
-    "footer_text": "&copy; 2025 Fangyuan Lin. Tous droits réservés."
+    "footer_text": "&copy; 2026 Fangyuan Lin. All rights reserved."
   }
 }

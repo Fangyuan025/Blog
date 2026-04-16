@@ -282,43 +282,17 @@
                 <span class="terminal-title">dead_static.exe</span>
               </div>
               <div class="terminal-body">
+<pre class="terminal-logo" aria-hidden="true"> ██████╗ ███████╗ █████╗ ██████╗     ███████╗████████╗ █████╗ ████████╗██╗ ██████╗
+ ██╔══██╗██╔════╝██╔══██╗██╔══██╗    ██╔════╝╚══██╔══╝██╔══██╗╚══██╔══╝██║██╔════╝
+ ██║  ██║█████╗  ███████║██║  ██║    ███████╗   ██║   ███████║   ██║   ██║██║
+ ██║  ██║██╔══╝  ██╔══██║██║  ██║    ╚════██║   ██║   ██╔══██║   ██║   ██║██║
+ ██████╔╝███████╗██║  ██║██████╔╝    ███████║   ██║   ██║  ██║   ██║   ██║╚██████╗
+ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═════╝     ╚══════╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝</pre>
                 <div id="terminal-output"></div>
                 <span class="terminal-cursor">_</span>
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Tech Stack — 1×1 -->
-        <div class="bento-card bento-small">
-          <h3 data-i18n="proj_stack_title">Tech Stack</h3>
-          <div class="stack-grid">
-            <span class="stack-item">Python</span>
-            <span class="stack-item">PyTorch</span>
-            <span class="stack-item">LLaMA</span>
-            <span class="stack-item">HuggingFace</span>
-            <span class="stack-item">JavaScript</span>
-            <span class="stack-item">Java</span>
-            <span class="stack-item">SQL</span>
-            <span class="stack-item">Three.js</span>
-            <span class="stack-item">Git</span>
-            <span class="stack-item">Linux</span>
-          </div>
-        </div>
-
-        <!-- GitHub card — 1×1 -->
-        <div class="bento-card bento-small bento-github">
-          <h3 data-i18n="proj_github_title">More Projects</h3>
-          <p data-i18n="proj_github_text">
-            Explore all my repositories and open-source contributions on GitHub.
-          </p>
-          <a
-            href="https://github.com/Fangyuan025"
-            target="_blank"
-            class="btn btn-sm"
-            data-i18n="proj_github_btn"
-            >Visit GitHub</a
-          >
         </div>
 
         <!-- Math Adventure — full-width with battle scene -->
@@ -450,11 +424,11 @@
                     Sure — I hit a race condition between two async workers sharing a cache…
                   </p>
                 </div>
-                <div class="chat-bubble bot-bubble bot-typing">
+                <div class="chat-bubble bot-bubble bot-streaming">
                   <span class="chat-who">Interviewer</span>
-                  <div class="typing-dots">
-                    <span></span><span></span><span></span>
-                  </div>
+                  <p class="stream-bubble">
+                    <span class="stream-text" data-stream-key="proj_chatbot_chat_q2"></span><span class="stream-cursor">▍</span>
+                  </p>
                 </div>
               </div>
             </div>
@@ -475,12 +449,6 @@
           <div class="contact-row">
             <span class="contact-label" data-i18n="contact_phone">Mobile</span>
             <span>+1 (343) 368-7929</span>
-          </div>
-          <div class="contact-row">
-            <span class="contact-label" data-i18n="contact_address"
-              >Address</span
-            >
-            <span>800 King Edward Ave, Ottawa, ON, Canada</span>
           </div>
           <div class="contact-row">
             <span class="contact-label">LinkedIn</span>
@@ -556,19 +524,19 @@
 
     <!-- ========== FOOTER ========== -->
     <footer>
-      <p data-i18n="footer_text">&copy; 2025 Fangyuan Lin. All rights reserved.</p>
+      <p data-i18n="footer_text">&copy; 2026 Fangyuan Lin. All rights reserved.</p>
     </footer>
 
-    <!-- Floating Math Adventure slime mascot -->
+    <!-- Floating slime mascot — click to jump back to top -->
     <button
       class="slime-mascot"
       id="slime-mascot"
       type="button"
-      aria-label="Pet the slime"
-      title="Click me!"
+      aria-label="Jump back to top"
+      title="Blorp! Back to top"
     >
       <img src="assets/images/math_slime.png" alt="" aria-hidden="true" />
-      <span class="slime-mascot-xp">+10 XP</span>
+      <span class="slime-mascot-msg">BLORP! ↑</span>
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>

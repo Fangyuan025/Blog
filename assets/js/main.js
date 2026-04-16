@@ -16,7 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     // Re-run typewriter with new language text
     restartTypewriter();
+    // Replay chat streaming with new language
+    if (chatStreamFn) chatStreamFn();
   }
+
+  // Forward declaration so loadTranslations can trigger re-stream on language change
+  var chatStreamFn = null;
 
   var langToggle = document.getElementById("language-toggle");
   if (langToggle) {
@@ -214,10 +219,44 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // ===== Chat Preview Replay (Interview Chatbot) =====
+  // ===== Chat Preview Replay + Streaming (Interview Chatbot) =====
   var chatPreview = document.getElementById("chat-preview");
   if (chatPreview) {
     var chatBubbles = chatPreview.querySelectorAll(".chat-bubble");
+    var streamEl = chatPreview.querySelector(".stream-text");
+    var streamTimeout = null;
+
+    function getStreamText() {
+      var key =
+        (streamEl && streamEl.getAttribute("data-stream-key")) ||
+        "proj_chatbot_chat_q2";
+      if (translations && translations[currentLang] && translations[currentLang][key]) {
+        return translations[currentLang][key];
+      }
+      return "Great example. How did you isolate the race in logs before you had a repro?";
+    }
+
+    function streamBubble() {
+      if (!streamEl) return;
+      clearTimeout(streamTimeout);
+      streamEl.textContent = "";
+      var full = getStreamText();
+      var i = 0;
+      function tick() {
+        if (i <= full.length) {
+          streamEl.textContent = full.slice(0, i);
+          i++;
+          // Slight jitter for realistic LLM-style streaming
+          var delay = 28 + Math.random() * 30;
+          streamTimeout = setTimeout(tick, delay);
+        }
+      }
+      // Start streaming after the third bubble fades in (~2.3s animation delay)
+      streamTimeout = setTimeout(tick, 2500);
+    }
+
+    chatStreamFn = streamBubble;
+
     var chatObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -228,6 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
               void b.offsetWidth;
               b.style.animation = "";
             });
+            streamBubble();
           }
         });
       },
@@ -236,20 +276,32 @@ document.addEventListener("DOMContentLoaded", function () {
     chatObserver.observe(chatPreview);
   }
 
-  // ===== Slime Mascot (Math Adventure easter egg) =====
+  // ===== Slime Mascot — click to jump to top =====
   var slimeMascot = document.getElementById("slime-mascot");
   if (slimeMascot) {
-    var xpValues = [5, 10, 15, 20, 25];
-    var xpLabel = slimeMascot.querySelector(".slime-mascot-xp");
+    var slimePhrases = ["BLORP! ↑", "BOING! ↑", "WHEEE ↑", "HUP! ↑", "SPLAT ↑"];
+    var msgLabel = slimeMascot.querySelector(".slime-mascot-msg");
+    // Hide mascot near the top so it doesn't hover over the hero
+    function updateMascotVisibility() {
+      if (window.scrollY < 200) {
+        slimeMascot.classList.add("is-hidden");
+      } else {
+        slimeMascot.classList.remove("is-hidden");
+      }
+    }
+    updateMascotVisibility();
+    window.addEventListener("scroll", updateMascotVisibility, { passive: true });
+
     slimeMascot.addEventListener("click", function () {
       if (slimeMascot.classList.contains("hit")) return;
-      if (xpLabel) {
-        xpLabel.textContent = "+" + xpValues[Math.floor(Math.random() * xpValues.length)] + " XP";
+      if (msgLabel) {
+        msgLabel.textContent = slimePhrases[Math.floor(Math.random() * slimePhrases.length)];
       }
       slimeMascot.classList.add("hit");
+      window.scrollTo({ top: 0, behavior: "smooth" });
       setTimeout(function () {
         slimeMascot.classList.remove("hit");
-      }, 900);
+      }, 1100);
     });
   }
 
