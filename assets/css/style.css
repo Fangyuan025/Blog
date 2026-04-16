@@ -885,15 +885,16 @@ nav .logo h1 {
 }
 .chat-bubble.bot-bubble {
   align-self: flex-start;
-  animation-delay: 0.25s;
+  animation-delay: 0.2s;
 }
 .chat-bubble.user-bubble {
   align-self: flex-end;
   align-items: flex-end;
-  animation-delay: 1.2s;
+  animation-delay: 3s;
 }
-.chat-bubble.bot-typing {
-  animation-delay: 2.3s;
+/* Second bot bubble (streams after user reply) */
+.chat-bubble.bot-bubble ~ .user-bubble ~ .bot-bubble {
+  animation-delay: 4.2s;
 }
 .chat-who {
   font-family: var(--font-mono);

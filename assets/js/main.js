@@ -223,36 +223,55 @@ document.addEventListener("DOMContentLoaded", function () {
   var chatPreview = document.getElementById("chat-preview");
   if (chatPreview) {
     var chatBubbles = chatPreview.querySelectorAll(".chat-bubble");
-    var streamEl = chatPreview.querySelector(".stream-text");
-    var streamTimeout = null;
+    var streamEls = chatPreview.querySelectorAll(".stream-text");
+    var streamFallbacks = {
+      proj_chatbot_chat_q1:
+        "Walk me through a challenging bug you solved recently.",
+      proj_chatbot_chat_q2:
+        "Great example. How did you isolate the race in logs before you had a repro?"
+    };
+    // Each stream element is paired with a delay (ms) before it begins typing.
+    // Delays align with CSS animation-delay on the parent bubbles.
+    var streamSchedule = [700, 4500];
+    var streamTimers = [];
 
-    function getStreamText() {
-      var key =
-        (streamEl && streamEl.getAttribute("data-stream-key")) ||
-        "proj_chatbot_chat_q2";
-      if (translations && translations[currentLang] && translations[currentLang][key]) {
+    function getStreamText(el) {
+      var key = el.getAttribute("data-stream-key");
+      if (
+        translations &&
+        translations[currentLang] &&
+        translations[currentLang][key]
+      ) {
         return translations[currentLang][key];
       }
-      return "Great example. How did you isolate the race in logs before you had a repro?";
+      return streamFallbacks[key] || "";
     }
 
-    function streamBubble() {
-      if (!streamEl) return;
-      clearTimeout(streamTimeout);
-      streamEl.textContent = "";
-      var full = getStreamText();
+    function clearStreamTimers() {
+      streamTimers.forEach(function (t) { clearTimeout(t); });
+      streamTimers = [];
+    }
+
+    function streamOne(el, startDelay) {
+      el.textContent = "";
+      var full = getStreamText(el);
       var i = 0;
       function tick() {
         if (i <= full.length) {
-          streamEl.textContent = full.slice(0, i);
+          el.textContent = full.slice(0, i);
           i++;
-          // Slight jitter for realistic LLM-style streaming
           var delay = 28 + Math.random() * 30;
-          streamTimeout = setTimeout(tick, delay);
+          streamTimers.push(setTimeout(tick, delay));
         }
       }
-      // Start streaming after the third bubble fades in (~2.3s animation delay)
-      streamTimeout = setTimeout(tick, 2500);
+      streamTimers.push(setTimeout(tick, startDelay));
+    }
+
+    function streamBubble() {
+      clearStreamTimers();
+      streamEls.forEach(function (el, idx) {
+        streamOne(el, streamSchedule[idx] || 500 + idx * 4000);
+      });
     }
 
     chatStreamFn = streamBubble;
