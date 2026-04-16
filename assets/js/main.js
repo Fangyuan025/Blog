@@ -214,6 +214,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // ===== Slime Mascot (Math Adventure easter egg) =====
+  var slimeMascot = document.getElementById("slime-mascot");
+  if (slimeMascot) {
+    var xpValues = [5, 10, 15, 20, 25];
+    var xpLabel = slimeMascot.querySelector(".slime-mascot-xp");
+    slimeMascot.addEventListener("click", function () {
+      if (slimeMascot.classList.contains("hit")) return;
+      if (xpLabel) {
+        xpLabel.textContent = "+" + xpValues[Math.floor(Math.random() * xpValues.length)] + " XP";
+      }
+      slimeMascot.classList.add("hit");
+      setTimeout(function () {
+        slimeMascot.classList.remove("hit");
+      }, 900);
+    });
+  }
+
   // ===== Feedback Form =====
   var feedbackForm = document.getElementById("feedback-form");
   var isFormSubmitted = false;

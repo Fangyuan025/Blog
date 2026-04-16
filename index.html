@@ -217,6 +217,14 @@
               <strong>educational psychology</strong> methodologies.
             </li>
           </ul>
+          <a
+            href="https://www.researchgate.net/publication/377932132_Sentiment_analysis_in_online_education_An_analytical_approach_and_application"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-sm btn-outline"
+            data-i18n="exp4_link"
+            >Read Publication on ResearchGate →</a
+          >
         </div>
       </div>
     </section>
@@ -298,44 +306,6 @@
           </div>
         </div>
 
-        <!-- Mock Interview Chatbot — 2×1 wide -->
-        <div class="bento-card bento-wide">
-          <div class="bento-wide-inner">
-            <div>
-              <h3 data-i18n="proj_chatbot_title">Mock Interview Chatbot</h3>
-              <span class="project-meta" data-i18n="proj_chatbot_meta"
-                >Team Lead | Fine-tuned LLM (Oct 2024 – Dec 2024)</span
-              >
-              <ul>
-                <li data-i18n="proj_chatbot_li1">
-                  Implemented a chatbot using
-                  <strong>fine-tuned open-source models</strong> to simulate
-                  realistic interview scenarios.
-                </li>
-                <li data-i18n="proj_chatbot_li2">
-                  Led model selection, prompt design, and team collaboration for
-                  an innovative interview practice tool.
-                </li>
-              </ul>
-              <a
-                href="https://github.com/Fangyuan025"
-                target="_blank"
-                class="btn btn-sm"
-                data-i18n="proj_chatbot_source"
-                >View Source Code</a
-              >
-            </div>
-            <div class="chatbot-icon">
-              <img
-                src="assets/images/botlogo.png"
-                alt="Chatbot"
-                width="80"
-                height="80"
-              />
-            </div>
-          </div>
-        </div>
-
         <!-- GitHub card — 1×1 -->
         <div class="bento-card bento-small bento-github">
           <h3 data-i18n="proj_github_title">More Projects</h3>
@@ -348,6 +318,108 @@
             class="btn btn-sm"
             data-i18n="proj_github_btn"
             >Visit GitHub</a
+          >
+        </div>
+
+        <!-- Math Adventure — 2×1 wide with battle scene -->
+        <div class="bento-card bento-wide bento-math">
+          <div class="bento-wide-inner">
+            <div>
+              <h3 data-i18n="proj_math_title">
+                Math Adventure: Gamified Learning
+              </h3>
+              <span class="project-meta" data-i18n="proj_math_meta"
+                >Solo Developer | Python · Pygame · Local LLM</span
+              >
+              <ul>
+                <li data-i18n="proj_math_li1">
+                  Built an <strong>RPG-style math quiz</strong> where players
+                  defeat monsters across 5 themed levels via turn-based arithmetic
+                  combat.
+                </li>
+                <li data-i18n="proj_math_li2">
+                  Integrated a <strong>local phi-1_5 LLM tutor</strong> that
+                  generates short natural-language explanations for wrong
+                  answers — fully offline after first download.
+                </li>
+                <li data-i18n="proj_math_li3">
+                  Packaged with <strong>PyInstaller</strong> into a distributable
+                  Windows build, with animated attack effects and dynamic
+                  per-level backgrounds.
+                </li>
+              </ul>
+              <div class="tech-badges">
+                <span class="badge">Python</span>
+                <span class="badge">Pygame</span>
+                <span class="badge">phi-1_5</span>
+                <span class="badge">HuggingFace</span>
+              </div>
+              <a
+                href="https://github.com/Fangyuan025/Mathadventure"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-sm"
+                data-i18n="proj_math_source"
+                >View Source Code</a
+              >
+            </div>
+            <div class="math-battle-scene" id="math-battle-scene">
+              <div class="battle-stage">
+                <img
+                  class="sprite player-sprite"
+                  src="assets/images/math_player.png"
+                  alt="Player"
+                />
+                <img
+                  class="sprite slime-sprite"
+                  src="assets/images/math_slime.png"
+                  alt="Slime monster"
+                />
+                <img
+                  class="sprite boss-sprite"
+                  src="assets/images/math_boss.png"
+                  alt="Boss monster"
+                />
+                <span class="battle-slash">+</span>
+              </div>
+              <div class="battle-hud">
+                <div class="hp-row">
+                  <span class="hp-label">HP</span>
+                  <div class="hp-bar"><div class="hp-fill"></div></div>
+                </div>
+                <div class="battle-prompt">
+                  <span class="prompt-q">18 + 4 = ?</span>
+                  <span class="prompt-cursor">_</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mock Interview Chatbot — 1×1 small -->
+        <div class="bento-card bento-small bento-chatbot">
+          <div class="chatbot-icon">
+            <img
+              src="assets/images/botlogo.png"
+              alt="Chatbot"
+              width="56"
+              height="56"
+            />
+          </div>
+          <h3 data-i18n="proj_chatbot_title">Mock Interview Chatbot</h3>
+          <span class="project-meta" data-i18n="proj_chatbot_meta"
+            >Team Lead | Fine-tuned LLM</span
+          >
+          <p class="bento-small-desc" data-i18n="proj_chatbot_short">
+            Fine-tuned open-source models to simulate realistic interview
+            scenarios. Led model selection, prompt design, and collaboration.
+          </p>
+          <a
+            href="https://github.com/Fangyuan025"
+            target="_blank"
+            class="btn btn-sm"
+            data-i18n="proj_chatbot_source"
+            >View Source Code</a
           >
         </div>
       </div>
@@ -448,6 +520,18 @@
     <footer>
       <p data-i18n="footer_text">&copy; 2025 Fangyuan Lin. All rights reserved.</p>
     </footer>
+
+    <!-- Floating Math Adventure slime mascot -->
+    <button
+      class="slime-mascot"
+      id="slime-mascot"
+      type="button"
+      aria-label="Pet the slime"
+      title="Click me!"
+    >
+      <img src="assets/images/math_slime.png" alt="" aria-hidden="true" />
+      <span class="slime-mascot-xp">+10 XP</span>
+    </button>
 
     <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
     <script src="assets/js/three-hero.js"></script>

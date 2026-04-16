@@ -787,6 +787,262 @@ nav .logo h1 {
   background: var(--accent-dim);
 }
 
+/* Chatbot card (now a small bento) */
+.bento-chatbot .chatbot-icon {
+  margin-bottom: 0.75rem;
+}
+.bento-chatbot .chatbot-icon img {
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  opacity: 0.9;
+}
+.bento-small-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0.5rem 0 1rem;
+}
+
+/* ===== MATH ADVENTURE — Battle Scene ===== */
+.bento-math .bento-wide-inner {
+  align-items: stretch;
+  gap: 1.5rem;
+}
+.bento-math .bento-wide-inner > div:first-child {
+  flex: 1 1 55%;
+  min-width: 0;
+}
+.math-battle-scene {
+  flex: 1 1 45%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.9rem;
+  background: linear-gradient(180deg, #1a0f0b 0%, #3a1a12 55%, #0d0a08 100%);
+  border: 1px solid rgba(255, 140, 90, 0.18);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1rem 0.85rem;
+  min-height: 210px;
+  position: relative;
+  overflow: hidden;
+}
+.math-battle-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 0 2px,
+      transparent 2px 22px
+    ),
+    radial-gradient(
+      ellipse at 50% 95%,
+      rgba(255, 120, 50, 0.28),
+      transparent 65%
+    );
+  pointer-events: none;
+}
+.math-battle-scene::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 54px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 180, 120, 0.35),
+    transparent
+  );
+  pointer-events: none;
+}
+.battle-stage {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 92px;
+  position: relative;
+  z-index: 1;
+  padding: 0 0.3rem;
+}
+.sprite {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.55));
+  pointer-events: none;
+  flex-shrink: 0;
+}
+.player-sprite {
+  width: 54px;
+  height: 54px;
+  animation: sprite-bob 2.1s ease-in-out infinite;
+}
+.slime-sprite {
+  width: 46px;
+  height: 46px;
+  transform-origin: 50% 100%;
+  animation: slime-idle 1.4s ease-in-out infinite;
+}
+.boss-sprite {
+  width: 72px;
+  height: 72px;
+  transform: scaleX(-1);
+  animation: boss-idle 2.8s ease-in-out infinite;
+}
+.battle-slash {
+  position: absolute;
+  left: 38%;
+  bottom: 28px;
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: #fef08a;
+  text-shadow: 0 0 8px rgba(254, 240, 138, 0.8);
+  opacity: 0;
+  pointer-events: none;
+  animation: slash-flash 3.4s ease-in-out infinite;
+}
+@keyframes sprite-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes slime-idle {
+  0%, 100% { transform: scale(1, 1) translateY(0); }
+  45% { transform: scale(1.12, 0.82) translateY(2px); }
+  70% { transform: scale(0.94, 1.08) translateY(-12px); }
+}
+@keyframes boss-idle {
+  0%, 100% { transform: scaleX(-1) translateY(0); }
+  50% { transform: scaleX(-1) translateY(-3px); }
+}
+@keyframes slash-flash {
+  0%, 70%, 100% { opacity: 0; transform: scale(0.6); }
+  78% { opacity: 1; transform: scale(1.3); }
+  88% { opacity: 0.5; transform: scale(1.6) rotate(15deg); }
+}
+.battle-hud {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono);
+}
+.hp-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+.hp-label {
+  font-size: 0.7rem;
+  color: #4ade80;
+  letter-spacing: 0.08em;
+}
+.hp-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.hp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4ade80, #22d3ee);
+  animation: hp-pulse 4s ease-in-out infinite;
+}
+@keyframes hp-pulse {
+  0%, 100% { width: 78%; }
+  48% { width: 52%; }
+  52% { width: 52%; }
+}
+.battle-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0.45rem 0.7rem;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(129, 140, 248, 0.3);
+  border-radius: 4px;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+.prompt-cursor {
+  color: var(--accent);
+  animation: blink 1s infinite;
+}
+
+/* ===== FLOATING SLIME MASCOT ===== */
+.slime-mascot {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 64px;
+  height: 64px;
+  z-index: 900;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  user-select: none;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.55));
+  transition: transform 0.2s ease;
+}
+.slime-mascot:hover {
+  transform: scale(1.1);
+}
+.slime-mascot img {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  animation: mascot-bounce 2.4s ease-in-out infinite;
+  transform-origin: 50% 100%;
+  pointer-events: none;
+}
+.slime-mascot-xp {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #4ade80;
+  text-shadow: 0 0 6px rgba(74, 222, 128, 0.8);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.slime-mascot.hit .slime-mascot-xp {
+  animation: xp-float 0.9s ease-out forwards;
+}
+.slime-mascot.hit img {
+  animation: mascot-hit 0.45s ease;
+}
+@keyframes mascot-bounce {
+  0%, 100% { transform: scale(1, 1) translateY(0); }
+  35% { transform: scale(1.08, 0.9) translateY(2px); }
+  55% { transform: scale(0.93, 1.08) translateY(-12px); }
+  75% { transform: scale(1.04, 0.96) translateY(0); }
+}
+@keyframes mascot-hit {
+  0% { transform: scale(1, 1); filter: brightness(1); }
+  30% { transform: scale(1.25, 0.78) rotate(-10deg); filter: brightness(2.5) hue-rotate(30deg); }
+  100% { transform: scale(1, 1); filter: brightness(1); }
+}
+@keyframes xp-float {
+  0% { opacity: 0; transform: translate(-50%, 0); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -36px); }
+}
+
+/* Experience timeline — publication link button */
+.timeline-item .btn-outline {
+  margin-top: 0.75rem;
+  display: inline-block;
+}
+
 /* ===== CONTACT ===== */
 .contact-grid {
   display: grid;
@@ -1020,8 +1276,16 @@ a:hover {
     align-items: flex-start;
   }
 
-  .chatbot-icon {
-    display: none;
+  .bento-math .math-battle-scene {
+    width: 100%;
+    min-height: 180px;
+  }
+
+  .slime-mascot {
+    width: 52px;
+    height: 52px;
+    bottom: 1rem;
+    right: 1rem;
   }
 
   .form-row {
