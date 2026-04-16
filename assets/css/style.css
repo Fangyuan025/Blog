@@ -701,28 +701,34 @@ nav .logo h1 {
   gap: 1.5rem;
 }
 
-.bento-wide h3 {
+.bento-wide h3,
+.bento-full h3 {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text);
   margin-bottom: 0.35rem;
 }
 
-.bento-wide ul {
+.bento-wide ul,
+.bento-full ul {
   list-style: none;
   margin: 0.75rem 0 1rem;
+  padding-left: 0;
 }
 
-.bento-wide li {
+.bento-wide li,
+.bento-full li {
   padding-left: 1rem;
   position: relative;
   margin-bottom: 0.4rem;
   font-size: 0.85rem;
   color: var(--text-muted);
   line-height: 1.65;
+  list-style: none;
 }
 
-.bento-wide li::before {
+.bento-wide li::before,
+.bento-full li::before {
   content: "›";
   position: absolute;
   left: 0;
@@ -730,7 +736,8 @@ nav .logo h1 {
   font-weight: 700;
 }
 
-.bento-wide li strong {
+.bento-wide li strong,
+.bento-full li strong {
   color: var(--text);
 }
 
