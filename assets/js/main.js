@@ -222,6 +222,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // ===== Chat Preview Replay + Streaming (Interview Chatbot) =====
   var chatPreview = document.getElementById("chat-preview");
   if (chatPreview) {
+    // Clean up any stale cursor markers from previously cached HTML
+    chatPreview.querySelectorAll(".stream-cursor").forEach(function (n) {
+      n.remove();
+    });
     var chatBubbles = chatPreview.querySelectorAll(".chat-bubble");
     var streamEls = chatPreview.querySelectorAll(".stream-text");
     var streamFallbacks = {

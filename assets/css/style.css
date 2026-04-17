@@ -1121,6 +1121,8 @@ nav .logo h1 {
 .stream-bubble {
   min-height: 1.55em;
 }
+/* Safety net: suppress any legacy cursor markup still present in cached HTML */
+.stream-cursor { display: none !important; }
 @keyframes chat-in {
   0% { opacity: 0; transform: translateY(10px); }
   100% { opacity: 1; transform: translateY(0); }
