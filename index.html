@@ -78,32 +78,124 @@
     <!-- ========== ABOUT & EDUCATION ========== -->
     <section id="about" class="section">
       <h2 data-i18n="about_title">About &amp; Education</h2>
-      <div class="about-grid">
-        <div class="about-text">
-          <p data-i18n="about_text">
-            I'm a self-driven engineer with a passion for developing modular and
-            production-ready ML pipelines. Whether it's fine-tuning
-            state-of-the-art models or engineering full-stack applications, I
-            thrive on turning research into real products.
-          </p>
-        </div>
-        <div class="edu-cards">
-          <div class="edu-card">
-            <span class="edu-icon">&#127891;</span>
-            <h3 data-i18n="edu_uottawa">University of Ottawa</h3>
-            <p data-i18n="edu_uottawa_desc">
-              M.Eng, Electrical and Computer Engineering (2024.09 – Present)
+      <div class="about-layout">
+        <!-- LEFT: Bio + Stats + Focus -->
+        <div class="about-main">
+          <div class="about-bio">
+            <span class="about-eyebrow" data-i18n="about_eyebrow"
+              >// WHO I AM</span
+            >
+            <p class="about-lead" data-i18n="about_text">
+              I'm a self-driven engineer with a passion for developing modular
+              and production-ready ML pipelines. Whether it's fine-tuning
+              state-of-the-art models or engineering full-stack applications, I
+              thrive on turning research into real products.
+            </p>
+            <p class="about-secondary" data-i18n="about_text_2">
+              Based in Ottawa, I work at the intersection of LLMs, NLP, and
+              systems engineering — shipping things that actually run offline,
+              quantized, and on real hardware. I care about robustness,
+              clarity, and making research feel like a product.
             </p>
           </div>
+
+          <div class="about-stats">
+            <div class="about-stat">
+              <span class="about-stat-num">4<span class="about-stat-plus">+</span></span>
+              <span class="about-stat-label" data-i18n="stat1_label"
+                >Years Building</span
+              >
+            </div>
+            <div class="about-stat">
+              <span class="about-stat-num">3</span>
+              <span class="about-stat-label" data-i18n="stat2_label"
+                >Languages <small>EN · FR · 中</small></span
+              >
+            </div>
+            <div class="about-stat">
+              <span class="about-stat-num">1</span>
+              <span class="about-stat-label" data-i18n="stat3_label"
+                >Published Paper</span
+              >
+            </div>
+            <div class="about-stat">
+              <span class="about-stat-num">10<span class="about-stat-plus">+</span></span>
+              <span class="about-stat-label" data-i18n="stat4_label"
+                >Shipped Projects</span
+              >
+            </div>
+          </div>
+
+          <div class="about-focus">
+            <span class="about-eyebrow" data-i18n="focus_eyebrow"
+              >// FOCUS AREAS</span
+            >
+            <div class="focus-tags">
+              <span class="focus-tag">LLM Fine-tuning</span>
+              <span class="focus-tag">QLoRA</span>
+              <span class="focus-tag">NLP Pipelines</span>
+              <span class="focus-tag">PyTorch</span>
+              <span class="focus-tag">Full-Stack</span>
+              <span class="focus-tag">llama.cpp</span>
+              <span class="focus-tag" data-i18n="focus_tag_research"
+                >Research → Product</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Education cards -->
+        <div class="about-education">
+          <span class="about-eyebrow" data-i18n="edu_eyebrow"
+            >// EDUCATION</span
+          >
           <div class="edu-card">
-            <span class="edu-icon">&#127891;</span>
+            <div class="edu-card-head">
+              <span class="edu-icon">&#127891;</span>
+              <span class="edu-date" data-i18n="edu_uottawa_date"
+                >2024.09 – Present</span
+              >
+            </div>
+            <h3 data-i18n="edu_uottawa">University of Ottawa</h3>
+            <p class="edu-degree" data-i18n="edu_uottawa_degree">
+              M.Eng, Electrical &amp; Computer Engineering
+            </p>
+            <p class="edu-location" data-i18n="edu_uottawa_loc">
+              Ottawa, Canada
+            </p>
+            <ul class="edu-highlights">
+              <li data-i18n="edu_uottawa_h1">
+                Graduate ML &amp; NLP coursework
+              </li>
+              <li data-i18n="edu_uottawa_h2">
+                Research on ML pipelines for text classification
+              </li>
+            </ul>
+          </div>
+          <div class="edu-card">
+            <div class="edu-card-head">
+              <span class="edu-icon">&#127891;</span>
+              <span class="edu-date" data-i18n="edu_qmul_date"
+                >2020.09 – 2024.07</span
+              >
+            </div>
             <h3 data-i18n="edu_qmul">
               Queen Mary University of London &amp; BUPT
             </h3>
-            <p data-i18n="edu_qmul_desc">
-              B.Eng, Telecommunication Engineering and Management (2020.09 –
-              2024.07)
+            <p class="edu-degree" data-i18n="edu_qmul_degree">
+              B.Eng, Telecommunication Engineering &amp; Management
             </p>
+            <p class="edu-location" data-i18n="edu_qmul_loc">
+              London, UK &middot; Beijing, China
+            </p>
+            <ul class="edu-highlights">
+              <li data-i18n="edu_qmul_h1">
+                Joint dual-degree international program
+              </li>
+              <li data-i18n="edu_qmul_h2">
+                Published sentiment-analysis research paper
+              </li>
+            </ul>
           </div>
         </div>
       </div>
