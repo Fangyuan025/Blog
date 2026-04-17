@@ -1121,20 +1121,6 @@ nav .logo h1 {
 .stream-bubble {
   min-height: 1.55em;
 }
-.stream-cursor {
-  display: inline-block;
-  color: var(--accent);
-  margin-left: 2px;
-  transform: translateY(1px);
-  animation: stream-blink 0.9s steps(1, end) infinite;
-}
-.chat-bubble.stream-done .stream-cursor {
-  display: none;
-}
-@keyframes stream-blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
 @keyframes chat-in {
   0% { opacity: 0; transform: translateY(10px); }
   100% { opacity: 1; transform: translateY(0); }
@@ -1323,6 +1309,7 @@ nav .logo h1 {
   padding: 0;
   cursor: pointer;
   user-select: none;
+  overflow: visible;
   filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.55));
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -1359,32 +1346,34 @@ nav .logo h1 {
 /* --- Comic-style hover speech bubble --- */
 .slime-tooltip {
   position: absolute;
-  bottom: calc(100% + 14px);
-  right: -4px;
+  bottom: calc(100% + 16px);
+  right: 6px;
   background: #fffdf4;
   color: #1a1a1a;
   font-family: "Comic Sans MS", "Chalkboard SE", "Marker Felt", var(--font-mono), sans-serif;
   font-weight: 700;
-  font-size: 0.78rem;
-  line-height: 1.15;
-  padding: 0.55rem 0.85rem;
+  font-size: 0.82rem;
+  line-height: 1.2;
+  padding: 0.55rem 0.9rem;
   border: 2px solid #0f0f10;
-  border-radius: 14px;
+  border-radius: 16px;
   box-shadow: 3px 3px 0 #0f0f10;
   white-space: nowrap;
   text-align: center;
   opacity: 0;
+  visibility: hidden;
   transform: translateY(6px) scale(0.85);
   transform-origin: bottom right;
-  transition: opacity 0.18s ease, transform 0.22s cubic-bezier(0.3, 1.6, 0.5, 1);
+  transition: opacity 0.18s ease, transform 0.22s cubic-bezier(0.3, 1.6, 0.5, 1),
+    visibility 0s linear 0.22s;
   pointer-events: none;
-  z-index: 2;
+  z-index: 10;
 }
 
 .slime-tooltip-line1 {
   display: block;
-  color: #22c55e;
-  font-size: 0.82rem;
+  color: #16a34a;
+  font-size: 0.92rem;
   letter-spacing: 0.02em;
 }
 
@@ -1392,36 +1381,39 @@ nav .logo h1 {
   display: block;
   font-size: 0.72rem;
   color: #1a1a1a;
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
-/* Comic tail — two stacked triangles (border + fill) pointing down-right toward the slime */
+/* Comic tail — two stacked symmetric triangles (outer border + inner fill) pointing down at the slime */
 .slime-tooltip::before,
 .slime-tooltip::after {
   content: "";
   position: absolute;
   width: 0;
   height: 0;
+  right: 18px;
 }
 .slime-tooltip::before {
-  right: 14px;
   bottom: -12px;
   border-left: 10px solid transparent;
-  border-right: 0 solid transparent;
+  border-right: 10px solid transparent;
   border-top: 12px solid #0f0f10;
 }
 .slime-tooltip::after {
-  right: 16px;
   bottom: -8px;
+  right: 21px;
   border-left: 7px solid transparent;
-  border-right: 0 solid transparent;
+  border-right: 7px solid transparent;
   border-top: 9px solid #fffdf4;
 }
 
 .slime-mascot:hover .slime-tooltip,
 .slime-mascot:focus-visible .slime-tooltip {
   opacity: 1;
+  visibility: visible;
   transform: translateY(0) scale(1);
+  transition: opacity 0.18s ease, transform 0.22s cubic-bezier(0.3, 1.6, 0.5, 1),
+    visibility 0s linear 0s;
 }
 
 /* Hide tooltip during the click-jump animation so it doesn't fight the BLORP! pop */

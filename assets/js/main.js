@@ -255,17 +255,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function streamOne(el, startDelay) {
       el.textContent = "";
       var full = getStreamText(el);
-      var bubble = el.closest(".chat-bubble");
-      if (bubble) bubble.classList.remove("stream-done");
       var i = 0;
       function tick() {
         if (i <= full.length) {
           el.textContent = full.slice(0, i);
           i++;
-          if (i > full.length) {
-            if (bubble) bubble.classList.add("stream-done");
-            return;
-          }
           var delay = 28 + Math.random() * 30;
           streamTimers.push(setTimeout(tick, delay));
         }
