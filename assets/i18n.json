@@ -14,7 +14,7 @@
     "about_text": "I'm a self-driven engineer with a passion for developing modular and production-ready ML pipelines. Whether it's fine-tuning state-of-the-art models or engineering full-stack applications, I thrive on turning research into real products.",
     "about_text_2": "Based in Ottawa, I work at the intersection of LLMs, NLP, and systems engineering — shipping things that actually run offline, quantized, and on real hardware. I care about robustness, clarity, and making research feel like a product.",
     "stat1_label": "Years Building",
-    "stat2_label": "Languages <small>EN · FR · 中</small>",
+    "stat2_label": "Languages <small>EN · FR · CN</small>",
     "stat3_label": "Published Paper",
     "stat4_label": "Shipped Projects",
     "focus_eyebrow": "// FOCUS AREAS",
@@ -95,6 +95,7 @@
     "feedback_message": "Message:",
     "feedback_send": "Send Feedback",
     "feedback_thanks": "Thank you for your feedback!",
+    "slime_tooltip": "Back to the top!",
     "footer_text": "&copy; 2026 Fangyuan Lin. All rights reserved."
   },
   "fr": {
@@ -112,7 +113,7 @@
     "about_text": "Je suis un ingénieur autodidacte passionné par le développement de pipelines ML modulaires et prêts pour la production. Que ce soit pour affiner des modèles de pointe ou concevoir des applications full-stack, je transforme la recherche en produits réels.",
     "about_text_2": "Basé à Ottawa, je travaille à l'intersection des LLM, du NLP et de l'ingénierie système — en livrant des produits qui tournent hors ligne, quantifiés, sur du vrai matériel. J'accorde de l'importance à la robustesse, la clarté, et à donner à la recherche l'allure d'un produit fini.",
     "stat1_label": "Années d'expérience",
-    "stat2_label": "Langues <small>EN · FR · 中</small>",
+    "stat2_label": "Langues <small>EN · FR · CN</small>",
     "stat3_label": "Article publié",
     "stat4_label": "Projets livrés",
     "focus_eyebrow": "// DOMAINES CLÉS",
@@ -193,6 +194,7 @@
     "feedback_message": "Message :",
     "feedback_send": "Envoyer",
     "feedback_thanks": "Merci pour votre retour !",
+    "slime_tooltip": "Retour en haut !",
     "footer_text": "&copy; 2026 Fangyuan Lin. All rights reserved."
   }
 }
