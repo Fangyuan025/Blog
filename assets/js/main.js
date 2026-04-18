@@ -256,6 +256,19 @@ document.addEventListener("DOMContentLoaded", function () {
       streamTimers = [];
     }
 
+    var chatBody = chatPreview.querySelector(".chat-body");
+    function scrollChatToBottom() {
+      if (!chatBody) return;
+      // Only follow along if the user hasn't scrolled up to read earlier
+      // messages — a ~24px tolerance keeps normal streaming sticky without
+      // yanking the viewport away from someone who scrolled back.
+      var distanceFromBottom =
+        chatBody.scrollHeight - chatBody.scrollTop - chatBody.clientHeight;
+      if (distanceFromBottom < 24) {
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+    }
+
     function streamOne(el, startDelay) {
       el.textContent = "";
       var full = getStreamText(el);
@@ -264,6 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (i <= full.length) {
           el.textContent = full.slice(0, i);
           i++;
+          scrollChatToBottom();
           var delay = 28 + Math.random() * 30;
           streamTimers.push(setTimeout(tick, delay));
         }
@@ -273,6 +287,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function streamBubble() {
       clearStreamTimers();
+      if (chatBody) chatBody.scrollTop = 0;
       streamEls.forEach(function (el, idx) {
         streamOne(el, streamSchedule[idx] || 500 + idx * 4000);
       });
