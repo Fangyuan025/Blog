@@ -836,7 +836,8 @@ nav .logo h1 {
   border: 1px solid rgba(129, 140, 248, 0.2);
 }
 
-/* Terminal Mockup */
+/* Terminal Mockup — fixed height so the typing animation never pushes
+   surrounding layout (the card and the Contact section below it) around. */
 .terminal-mockup {
   background: #0d0d0d;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -844,7 +845,10 @@ nav .logo h1 {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 220px;
+  height: 400px;
+}
+.terminal-body {
+  overflow: hidden; /* clip any overflow from the typing animation */
 }
 
 .terminal-header {
@@ -1015,9 +1019,11 @@ nav .logo h1 {
   min-width: 0;
 }
 
-/* ===== INTERVIEW CHATBOT — Chat Preview ===== */
+/* ===== INTERVIEW CHATBOT — Chat Preview =====
+   Fixed height so streaming text never grows the card — otherwise the
+   whole Contact section below gets pushed down mid-animation. */
 .chat-preview {
-  flex: 1 1 45%;
+  flex: 0 0 45%;
   min-width: 0;
   background: #0b0b0f;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1025,7 +1031,7 @@ nav .logo h1 {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  min-height: 240px;
+  height: 360px;
 }
 .chat-preview-header {
   display: flex;
@@ -1698,10 +1704,17 @@ a:hover {
     align-items: flex-start;
   }
 
-  .bento-math .math-battle-scene,
-  .bento-chatbot .chat-preview {
+  .bento-math .math-battle-scene {
     width: 100%;
     min-height: 200px;
+  }
+
+  .bento-chatbot .chat-preview {
+    width: 100%;
+    /* Full-width on mobile — bubbles wrap less, so we can shrink slightly.
+       Still fixed so streaming never reflows the page. */
+    height: 320px;
+    flex: 0 0 auto;
   }
 
   .slime-mascot {
@@ -1746,7 +1759,9 @@ a:hover {
   }
 
   .terminal-mockup {
-    min-height: 200px;
+    /* Slightly shorter on mobile but still fixed so the typing animation
+       doesn't grow the card. */
+    height: 340px;
   }
 
   .terminal-body {
