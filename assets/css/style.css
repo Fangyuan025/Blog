@@ -1650,7 +1650,15 @@ a:hover {
   }
 
   .bento-card-inner {
-    grid-template-columns: 1fr;
+    /* .bento-card-inner is a flex row on desktop; stack vertically on
+       narrow viewports so Dead Static's info and terminal don't squeeze
+       together and overflow. */
+    flex-direction: column;
+  }
+  .bento-card-inner > .project-info,
+  .bento-card-inner > .terminal-mockup {
+    flex: 0 0 auto;
+    width: 100%;
   }
 
   .terminal-mockup {
