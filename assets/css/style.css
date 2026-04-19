@@ -764,13 +764,17 @@ nav .logo h1 {
 
 .bento-card-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  /* Match the 55/45 info-to-visual split used by the other two project cards
+     (Math Adventure & Mock Interview) so Dead Static visually aligns with them. */
+  grid-template-columns: 55fr 45fr;
+  gap: 1.75rem;
   height: 100%;
+  align-items: stretch;
 }
 
 .project-info h3 {
-  font-size: 1.2rem;
+  /* Same size as .bento-full h3 — keeps all three project titles uniform. */
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--text);
   margin-bottom: 0.35rem;
@@ -837,7 +841,9 @@ nav .logo h1 {
 }
 
 /* Terminal Mockup — fixed height so the typing animation never pushes
-   surrounding layout (the card and the Contact section below it) around. */
+   surrounding layout (the card and the Contact section below it) around.
+   Height matches .chat-preview (360px) so Dead Static and Mock Interview
+   cards line up visually. */
 .terminal-mockup {
   background: #0d0d0d;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -845,7 +851,7 @@ nav .logo h1 {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 360px;
 }
 .terminal-body {
   overflow: hidden; /* clip any overflow from the typing animation */
@@ -1771,14 +1777,15 @@ a:hover {
     font-size: 1rem;
   }
 
-  .project-info h3 {
+  .project-info h3,
+  .bento-full h3 {
     font-size: 1.05rem;
   }
 
   .terminal-mockup {
-    /* Slightly shorter on mobile but still fixed so the typing animation
-       doesn't grow the card. */
-    height: 340px;
+    /* Match .chat-preview mobile height (320px) — keeps both featured cards
+       the same size on phones too. */
+    height: 320px;
   }
 
   .terminal-body {
