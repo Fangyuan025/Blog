@@ -2101,7 +2101,7 @@ a:hover {
 
 .blog-article-body {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: 1.22rem;
   line-height: 1.82;
   color: var(--text);
   letter-spacing: 0.003em;
@@ -2144,7 +2144,7 @@ a:hover {
 
 .blog-article-body h3 {
   font-family: var(--font);
-  font-size: 1.22rem;
+  font-size: 1.3rem;
   margin: 2rem 0 0.7rem;
   color: var(--text);
   font-weight: 600;
@@ -2379,7 +2379,7 @@ a:hover {
   }
 
   .blog-article-body {
-    font-size: 1.08rem;
+    font-size: 1.14rem;
     line-height: 1.78;
   }
 
@@ -2393,7 +2393,7 @@ a:hover {
   }
 
   .blog-article-body h3 {
-    font-size: 1.12rem;
+    font-size: 1.18rem;
   }
 
   .blog-back {
