@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Local open-source AI blog cover">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0b14"/>
+      <stop offset="1" stop-color="#151528"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#818cf8"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <radialGradient id="orb" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#818cf8" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#818cf8" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 L0 0 0 40" fill="none" stroke="#2a2a40" stroke-width="0.8"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.45"/>
+  <circle cx="900" cy="220" r="320" fill="url(#orb)"/>
+
+  <!-- Laptop -->
+  <g transform="translate(110,160)">
+    <rect x="0" y="0" width="560" height="340" rx="18" fill="#0f0f1e" stroke="#3a3a55" stroke-width="2"/>
+    <rect x="18" y="18" width="524" height="304" rx="8" fill="#0a0a14"/>
+    <!-- Terminal prompt -->
+    <g font-family="JetBrains Mono, monospace" font-size="18" fill="#d8d8ff">
+      <text x="36" y="62">$ ollama run qwen:7b</text>
+      <text x="36" y="96" fill="#818cf8">&gt;&gt;&gt; why does local AI matter?</text>
+      <text x="36" y="136" fill="#a8ffb3">Running locally. 0 tokens sent to any server.</text>
+      <text x="36" y="170" fill="#cfcffa">Because your prompts</text>
+      <text x="36" y="196" fill="#cfcffa">should not be someone</text>
+      <text x="36" y="222" fill="#cfcffa">else's training data.</text>
+      <text x="36" y="266" fill="#22d3ee">▂ 42 tok/s · offline · Q4_K_M · 4.1 GB</text>
+      <text x="36" y="300" fill="#818cf8">_</text>
+    </g>
+    <!-- Base -->
+    <rect x="-40" y="340" width="640" height="18" rx="6" fill="#1a1a2e"/>
+    <rect x="240" y="340" width="80" height="8" rx="4" fill="#0a0a14"/>
+  </g>
+
+  <!-- Right side label -->
+  <g transform="translate(720,180)" font-family="Inter, sans-serif" fill="#f5f5ff">
+    <text x="0" y="0" font-size="20" fill="#818cf8" letter-spacing="3">// LOCAL · OPEN-SOURCE · PRIVATE</text>
+    <text x="0" y="60" font-size="54" font-weight="700">The future of AI</text>
+    <text x="0" y="118" font-size="54" font-weight="700">runs on your</text>
+    <text x="0" y="176" font-size="54" font-weight="700" fill="url(#glow)">device.</text>
+    <text x="0" y="240" font-size="22" fill="#a5a5c8">5 reasons local LLMs win the long tail.</text>
+  </g>
+</svg>

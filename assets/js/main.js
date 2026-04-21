@@ -1,12 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
   // ===== i18n System =====
-  let currentLang = "en";
+  // Persist language across pages (post.html uses the same key)
+  const LANG_KEY = "site_lang";
+  let currentLang = (function () {
+    try {
+      const v = localStorage.getItem(LANG_KEY);
+      return v === "fr" || v === "en" ? v : "en";
+    } catch (e) {
+      return "en";
+    }
+  })();
   let translations = null;
 
   async function loadTranslations() {
     if (!translations) {
       const res = await fetch("assets/i18n.json");
       translations = await res.json();
+      window.__translations = translations;
     }
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
       var key = el.getAttribute("data-i18n");
@@ -18,6 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
     restartTypewriter();
     // Replay chat streaming with new language
     if (chatStreamFn) chatStreamFn();
+    // Ask the blog module to redraw cards + active article in the new language
+    if (typeof window.__blogRefresh === "function") {
+      window.__blogRefresh();
+    }
   }
 
   // Forward declaration so loadTranslations can trigger re-stream on language change
@@ -25,19 +39,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var langToggle = document.getElementById("language-toggle");
   if (langToggle) {
+    // Reflect the persisted language on the toggle label at init
+    langToggle.textContent = currentLang === "en" ? "FR" : "EN";
+    document.documentElement.lang = currentLang;
     langToggle.addEventListener("click", function (e) {
       e.preventDefault();
       currentLang = currentLang === "en" ? "fr" : "en";
+      try { localStorage.setItem(LANG_KEY, currentLang); } catch (err) {}
       langToggle.textContent = currentLang === "en" ? "FR" : "EN";
       document.documentElement.lang = currentLang;
       loadTranslations();
     });
   }
 
-  // Pre-load translations so they're ready when toggled
+  // Pre-load translations so they're ready when toggled. If the persisted
+  // language is not the page's hard-coded default (EN), apply them right away
+  // so data-i18n elements, typewriter, and blog cards all match on first paint.
   fetch("assets/i18n.json")
     .then(function (r) { return r.json(); })
-    .then(function (data) { translations = data; });
+    .then(function (data) {
+      translations = data;
+      window.__translations = data;
+      if (currentLang !== "en") {
+        loadTranslations();
+      } else if (typeof window.__blogRefresh === "function") {
+        // Even in EN, let the blog module render once translations exist
+        // so its t() helper can read them.
+        window.__blogRefresh();
+      }
+    });
 
   // ===== Typewriter =====
   var typewriterEl = document.getElementById("typewriter");
@@ -69,7 +99,13 @@ document.addEventListener("DOMContentLoaded", function () {
     runTypewriter(text);
   }
 
-  runTypewriter("Welcome! I'm Fangyuan Lin");
+  // Initial typewriter reflects the persisted language immediately so there's
+  // no flash of EN before translations load.
+  runTypewriter(
+    currentLang === "fr"
+      ? "Bienvenue! Je suis Fangyuan Lin"
+      : "Welcome! I'm Fangyuan Lin"
+  );
 
   // ===== Mobile Menu =====
   var mobileMenu = document.getElementById("mobile-menu");

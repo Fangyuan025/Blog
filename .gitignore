@@ -1,0 +1,10 @@
+# Local dev tooling (preview server configs, worktrees)
+.claude/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/

@@ -1863,3 +1863,521 @@ a:hover {
     padding: 0.25rem 0.6rem;
   }
 }
+
+/* ==================================================
+   ========== BLOG MODULE ===========================
+   ================================================== */
+
+#blog {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.blog-header {
+  margin-bottom: 2.5rem;
+}
+
+.blog-header h2 {
+  margin-top: 0;
+}
+
+/* Dedicated post page (post.html) — reading-width article, no hero */
+.post-page main.post-main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-top: 7rem; /* clear fixed nav */
+  padding-bottom: 6rem;
+  /* post.html doesn't load main.js's IntersectionObserver, so override
+     the default `.section { opacity: 0 }` that waits for .visible */
+  opacity: 1;
+  transform: none;
+}
+
+.post-page .blog-article {
+  margin: 0;
+}
+
+/* ---------- Index grid ---------- */
+.blog-index {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.blog-empty {
+  grid-column: 1 / -1;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--text);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: var(--transition);
+  position: relative;
+}
+
+.blog-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(129, 140, 248, 0) 0%,
+    rgba(129, 140, 248, 0.04) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  box-shadow: 0 20px 40px -20px rgba(129, 140, 248, 0.25);
+}
+
+.blog-card:hover::before {
+  opacity: 1;
+}
+
+.blog-card-cover {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-color: #12122a;
+  border-bottom: 1px solid var(--border);
+}
+
+.blog-card-body {
+  padding: 1.4rem 1.5rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  flex: 1;
+}
+
+.blog-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+}
+
+.blog-card-dot {
+  opacity: 0.6;
+}
+
+.blog-card h3 {
+  font-size: 1.2rem;
+  line-height: 1.35;
+  color: var(--text);
+  margin: 0;
+}
+
+.blog-card-excerpt {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.2rem;
+}
+
+.blog-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid rgba(129, 140, 248, 0.22);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  letter-spacing: 0.01em;
+}
+
+.blog-card-cta {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Article view ---------- */
+.blog-article {
+  max-width: 740px;
+  margin: 0 auto;
+  background: transparent;
+  color: var(--text);
+}
+
+.blog-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(24, 24, 27, 0.55);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 0.55rem 1.1rem 0.55rem 0.9rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-bottom-color: var(--border); /* override .blog-article-body a underline */
+  cursor: pointer;
+  margin-bottom: 2.5rem;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: color 0.2s ease, border-color 0.2s ease,
+              background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-back::before {
+  content: "";
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 999px;
+  background: rgba(129, 140, 248, 0.12);
+  /* Left-pointing arrow, drawn with SVG so it aligns pixel-perfect */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23a5b4fc' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'><path d='M10 3L5 8l5 5'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0.8rem 0.8rem;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.blog-back:hover {
+  color: var(--text);
+  border-color: var(--accent);
+  background: rgba(129, 140, 248, 0.08);
+  transform: translateX(-2px);
+  box-shadow: 0 6px 20px -10px rgba(129, 140, 248, 0.45);
+}
+
+.blog-back:hover::before {
+  background-color: rgba(129, 140, 248, 0.22);
+  transform: translateX(-2px);
+}
+
+.blog-article-body {
+  font-size: 1.05rem;
+  line-height: 1.78;
+  color: var(--text);
+}
+
+.blog-article-body > *:first-child {
+  margin-top: 0;
+}
+
+.blog-article-body h1 {
+  font-family: var(--font);
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.4rem;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.blog-article-body h2 {
+  font-size: 1.55rem;
+  line-height: 1.3;
+  margin: 2.8rem 0 1rem;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  font-weight: 700;
+  padding-top: 0.4rem;
+}
+
+.blog-article-body h2::before {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 2px;
+  background: var(--accent);
+  margin-bottom: 1rem;
+  border-radius: 2px;
+}
+
+.blog-article-body h3 {
+  font-size: 1.22rem;
+  margin: 2rem 0 0.7rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.blog-article-body p {
+  margin: 0 0 1.3rem;
+  color: var(--text);
+}
+
+/* Byline line under the H1 — author explicitly writes this as
+   <p class="post-meta">April 19, 2026 · 9 min read · by Fangyuan Lin</p>
+   in the markdown. Keeping it explicit avoids the classic
+   ":first-child:last-child" CSS gotcha where text nodes don't count
+   and every standalone <em> in the article gets matched. */
+.blog-article-body .post-meta {
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+  margin-bottom: 2.4rem;
+}
+
+/* News-style pull-quote with source attribution.
+   Markdown form:
+     > Quote body.
+     > — Source, [link text](url)
+   marked renders this as <blockquote><p>Quote... — Source, link</p></blockquote>.
+   The .news-quote class is added by the blog renderer when a blockquote's
+   last line starts with an em-dash. */
+.blog-article-body blockquote.news-quote {
+  position: relative;
+  padding: 1.4rem 1.5rem 1.3rem 3rem;
+  border-left: 3px solid var(--accent);
+  background: rgba(129, 140, 248, 0.05);
+  font-style: normal;
+  color: var(--text);
+  margin: 2rem 0;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.blog-article-body blockquote.news-quote::before {
+  content: "\201C";
+  position: absolute;
+  left: 0.9rem;
+  top: 0.4rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+.blog-article-body blockquote.news-quote p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.blog-article-body blockquote.news-quote .news-quote-body {
+  color: var(--text);
+  font-style: italic;
+}
+
+/* Any nested <em> inside an already-italic quote body should invert
+   back to upright, the standard typographic convention. */
+.blog-article-body blockquote.news-quote .news-quote-body em {
+  font-style: normal;
+}
+
+.blog-article-body blockquote.news-quote .news-quote-source {
+  display: block;
+  margin-top: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.blog-article-body blockquote.news-quote .news-quote-source a {
+  color: var(--text-muted);
+  border-bottom-color: rgba(161, 161, 170, 0.3);
+}
+
+.blog-article-body blockquote.news-quote .news-quote-source a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.blog-article-body strong {
+  color: #f1f1f5;
+  font-weight: 600;
+}
+
+.blog-article-body a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(129, 140, 248, 0.28);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.blog-article-body a:hover {
+  color: #a5b4fc;
+  border-bottom-color: var(--accent);
+}
+
+.blog-article-body ul,
+.blog-article-body ol {
+  margin: 0 0 1.4rem 1.3rem;
+  color: var(--text);
+}
+
+.blog-article-body li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.blog-article-body li::marker {
+  color: var(--accent);
+}
+
+.blog-article-body blockquote {
+  margin: 1.8rem 0;
+  padding: 0.9rem 1.2rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-glow);
+  color: var(--text-muted);
+  font-style: italic;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.blog-article-body blockquote p {
+  margin-bottom: 0;
+}
+
+.blog-article-body code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: rgba(255, 255, 255, 0.06);
+  color: #c4b5fd;
+  padding: 0.12em 0.45em;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.blog-article-body pre {
+  background: #0f0f1a;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.blog-article-body pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: var(--text);
+}
+
+.blog-article-body hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.8rem 0;
+}
+
+.blog-article-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 2rem auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: #0f0f1a;
+}
+
+/* Image captions — explicit class, not a generic "em after img" selector
+   (which would also match inline <em> right after an inline <img> in prose).
+   To caption an image, write:
+     <figure>
+       <img src="..." alt="...">
+       <figcaption>Caption text.</figcaption>
+     </figure>
+   in the markdown. */
+.blog-article-body figure {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.blog-article-body figure img {
+  margin: 0 auto 0.7rem;
+}
+
+.blog-article-body figcaption {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* YouTube embed */
+.blog-article-body .youtube-embed {
+  margin: 2rem 0;
+}
+
+.blog-article-body .youtube-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #000;
+}
+
+.blog-article-body .youtube-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 768px) {
+  .blog-index {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .blog-article-body {
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+
+  .blog-article-body h1 {
+    font-size: 1.7rem;
+  }
+
+  .blog-article-body h2 {
+    font-size: 1.35rem;
+    margin-top: 2.2rem;
+  }
+
+  .blog-article-body h3 {
+    font-size: 1.12rem;
+  }
+
+  .blog-back {
+    margin-bottom: 1.8rem;
+  }
+}
+

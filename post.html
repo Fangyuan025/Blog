@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog · Fangyuan Lin</title>
+    <link rel="icon" href="assets/images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body class="post-page">
+    <!-- ========== NAV (simplified for post page) ========== -->
+    <header>
+      <nav>
+        <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit"><h1>FL</h1></a></div>
+        <ul class="nav-links">
+          <li><a href="index.html#hero" data-i18n="nav_home">Home</a></li>
+          <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
+          <li><a href="index.html#experience" data-i18n="nav_experience">Experience</a></li>
+          <li><a href="index.html#projects" data-i18n="nav_projects">Projects</a></li>
+          <li><a href="index.html#blog" class="active" data-i18n="nav_blog">Blog</a></li>
+          <li><a href="index.html#contact" data-i18n="nav_contact">Contact</a></li>
+          <li><a id="language-toggle" href="#">FR</a></li>
+        </ul>
+        <div class="menu-toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+
+    <main class="post-main section">
+      <article class="blog-article">
+        <a
+          href="index.html#blog"
+          class="blog-back"
+          id="blog-back"
+          data-i18n="blog_back"
+          >Back to all posts</a
+        >
+        <div id="blog-article-body" class="blog-article-body">
+          <p class="blog-empty" data-i18n="blog_loading">Loading…</p>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <p data-i18n="footer_text">&copy; 2026 Fangyuan Lin. All rights reserved.</p>
+    </footer>
+
+    <!-- Floating slime mascot — click to jump back to top -->
+    <button
+      class="slime-mascot"
+      id="slime-mascot"
+      type="button"
+      aria-label="Jump back to top"
+    >
+      <span class="slime-tooltip" aria-hidden="true"
+        ><span class="slime-tooltip-line1">Blorp!</span
+        ><span class="slime-tooltip-line2" data-i18n="slime_tooltip"
+          >Back to the top!</span
+        ></span
+      >
+      <img src="assets/images/math_slime.png" alt="" aria-hidden="true" />
+      <span class="slime-mascot-msg">BLORP! ↑</span>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+    <script src="assets/js/post.js"></script>
+  </body>
+</html>

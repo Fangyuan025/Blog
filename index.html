@@ -23,6 +23,7 @@
           <li><a href="#about" data-i18n="nav_about">About</a></li>
           <li><a href="#experience" data-i18n="nav_experience">Experience</a></li>
           <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+          <li><a href="#blog" data-i18n="nav_blog">Blog</a></li>
           <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
           <li><a id="language-toggle" href="#">FR</a></li>
         </ul>
@@ -529,6 +530,16 @@
       </div>
     </section>
 
+    <!-- ========== BLOG ========== -->
+    <section id="blog" class="section">
+      <div class="blog-header">
+        <h2 data-i18n="blog_title">Blog</h2>
+      </div>
+
+      <!-- Post cards — each links to post.html?slug=<slug> -->
+      <div id="blog-index" class="blog-index" aria-live="polite"></div>
+    </section>
+
     <!-- ========== CONTACT ========== -->
     <section id="contact" class="section">
       <h2 data-i18n="contact_title">Contact</h2>
@@ -637,7 +648,9 @@
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
     <script src="assets/js/three-hero.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/blog.js"></script>
   </body>
 </html>

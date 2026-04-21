@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "slug": "local-llm-rise",
+      "date": "2026-04-19",
+      "reading_minutes": 9,
+      "cover": "assets/images/blog/local-llm-cover.svg",
+      "tags_en": ["Local LLM", "Open Source", "Privacy", "MoE", "On-device AI"],
+      "tags_fr": ["LLM local", "Open source", "Vie privée", "MoE", "IA embarquée"],
+      "title_en": "The Rise of Local Open-Source AI: Why the Future Runs on Your Device",
+      "title_fr": "L'essor de l'IA open-source locale : pourquoi l'avenir tournera sur votre appareil",
+      "excerpt_en": "Cloud LLMs are convenient — but they are also expensive, privacy-hostile, and fundamentally someone else's computer. Here are five reasons the next wave of useful AI will run on the hardware already sitting on your desk.",
+      "excerpt_fr": "Les LLM dans le nuage sont pratiques — mais ils sont aussi coûteux, hostiles à la vie privée, et fondamentalement l'ordinateur de quelqu'un d'autre. Voici cinq raisons pour lesquelles la prochaine vague d'IA utile tournera sur le matériel déjà posé sur votre bureau."
+    }
+  ]
+}
