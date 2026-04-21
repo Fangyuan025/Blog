@@ -91,8 +91,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function restartTypewriter() {
     var text =
       currentLang === "fr"
-        ? "Bienvenue! Je suis Fangyuan Lin"
-        : "Welcome! I'm Fangyuan Lin";
+        ? "Salut ! Moi, c'est Fangyuan Lin"
+        : "Hey there, I'm Fangyuan Lin";
     if (translations && translations[currentLang] && translations[currentLang].typewriter) {
       text = translations[currentLang].typewriter;
     }
@@ -103,8 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // no flash of EN before translations load.
   runTypewriter(
     currentLang === "fr"
-      ? "Bienvenue! Je suis Fangyuan Lin"
-      : "Welcome! I'm Fangyuan Lin"
+      ? "Salut ! Moi, c'est Fangyuan Lin"
+      : "Hey there, I'm Fangyuan Lin"
   );
 
   // ===== Mobile Menu =====
