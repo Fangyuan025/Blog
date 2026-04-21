@@ -205,6 +205,22 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
       setTimeout(function () { mascot.classList.remove("hit"); }, 1100);
     });
+
+    // Click the speech bubble to dismiss it. Does NOT trigger the
+    // scroll-to-top action. Bubble reappears on the next hover.
+    var tooltip = mascot.querySelector(".slime-tooltip");
+    if (tooltip) {
+      tooltip.addEventListener("click", function (e) {
+        e.stopPropagation();
+        mascot.classList.add("tooltip-dismissed");
+      });
+      mascot.addEventListener("mouseleave", function () {
+        mascot.classList.remove("tooltip-dismissed");
+      });
+      mascot.addEventListener("blur", function () {
+        mascot.classList.remove("tooltip-dismissed");
+      });
+    }
   })();
 
   // ---------- mobile menu ----------

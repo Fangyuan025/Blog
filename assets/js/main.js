@@ -377,6 +377,23 @@ document.addEventListener("DOMContentLoaded", function () {
         slimeMascot.classList.remove("hit");
       }, 1100);
     });
+
+    // Click the speech bubble to dismiss it without triggering the
+    // scroll-to-top action. The bubble stays hidden until the pointer
+    // leaves the mascot area — then a fresh hover re-opens it.
+    var slimeTooltip = slimeMascot.querySelector(".slime-tooltip");
+    if (slimeTooltip) {
+      slimeTooltip.addEventListener("click", function (e) {
+        e.stopPropagation();
+        slimeMascot.classList.add("tooltip-dismissed");
+      });
+      slimeMascot.addEventListener("mouseleave", function () {
+        slimeMascot.classList.remove("tooltip-dismissed");
+      });
+      slimeMascot.addEventListener("blur", function () {
+        slimeMascot.classList.remove("tooltip-dismissed");
+      });
+    }
   }
 
   // ===== Feedback Form =====
