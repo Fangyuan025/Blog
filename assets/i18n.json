@@ -112,14 +112,14 @@
     "nav_projects": "Projets",
     "nav_blog": "Blog",
     "nav_contact": "Contact",
-    "typewriter": "Bienvenue! Je suis Fangyuan Lin",
-    "hero_strong": "Connecter la recherche en IA et la production.",
-    "hero_detail": "M.Ing en génie électrique et informatique @ uOttawa. Je travaille sur toute la pile de l'IA générative — ajustement, RAG, agents, et tout ce qu'il y a entre les deux — en transformant la recherche en logiciel qui livre.",
+    "typewriter": "Salut ! Moi, c'est Fangyuan Lin",
+    "hero_strong": "De la recherche en IA jusqu'au produit.",
+    "hero_detail": "M.Ing en génie électrique et informatique @ uOttawa. Je touche à toute la pile de l'IA générative — fine-tuning, RAG, agents, et tout ce qu'il y a entre — pour transformer la recherche en logiciels qui tournent vraiment.",
     "hero_cta": "Voir mes travaux",
     "about_title": "À propos & Éducation",
     "about_eyebrow": "// QUI JE SUIS",
-    "about_text": "Je suis un ingénieur qui livre, et je suis curieux de chaque recoin de l'IA générative — ajuster des modèles open-source avec QLoRA, monter des pipelines RAG, prototyper des agents, comprendre ce qui marche vraiment en pratique. J'aime transformer un article de recherche en quelque chose que de vraies personnes peuvent utiliser.",
-    "about_text_2": "Basé à Ottawa, je travaille à la couture entre LLM, NLP et ingénierie système — la couche où la sortie brute d'un modèle doit devenir un produit : ancrée dans des données réelles, robuste face aux entrées désordonnées, et utilisable par des gens qui ne se soucient pas de ce qu'il y a en dessous. J'accorde de l'importance à la clarté, à la fiabilité, et à combler l'écart entre un notebook de recherche et un produit fini.",
+    "about_text": "Ingénieur qui livre, curieux de tout ce qui touche à l'IA générative : fine-tuner des modèles open-source avec QLoRA, monter des pipelines RAG, prototyper des agents, voir ce qui marche vraiment en pratique. Ce que j'aime, c'est transformer un article de recherche en quelque chose que de vrais gens peuvent utiliser.",
+    "about_text_2": "Basé à Ottawa, je travaille à la jonction entre LLM, NLP et ingénierie système — là où la sortie brute d'un modèle doit devenir un produit : bien ancrée, solide face à des entrées en vrac, et utilisable sans se soucier de ce qui tourne en dessous. Ce qui compte pour moi : la clarté, la fiabilité, et combler l'écart entre un notebook de recherche et un vrai produit.",
     "stat1_label": "Années d'expérience",
     "stat2_label": "Langues <small>EN · FR · CN</small>",
     "stat3_label": "Article publié",
@@ -151,8 +151,8 @@
     "exp2_date": "Nov 2023 – Avr 2024",
     "exp2_title": "Chercheur ML — Analyse de sentiment bimodale",
     "exp2_company": "Projet académique",
-    "exp2_li1": "Développé un système d'<strong>analyse de sentiment bimodale</strong> combinant régression logistique (texte) et Random Forest (parole).",
-    "exp2_li2": "Construit une interface graphique interactive avec tkinter, atteignant <strong>~93% de précision</strong> pour la classification de texte.",
+    "exp2_li1": "Développé un système d'<strong>analyse de sentiment bimodale</strong> combinant régression logistique (texte) et Random Forest (signal vocal).",
+    "exp2_li2": "Construit une interface graphique interactive avec tkinter, atteignant <strong>~93 % de précision</strong> pour la classification de texte.",
     "exp3_date": "Juil 2023 – Sept 2023",
     "exp3_title": "Stagiaire ingénieur algorithme NLP",
     "exp3_company": "Emotibot Technology",
@@ -209,6 +209,6 @@
     "feedback_send": "Envoyer",
     "feedback_thanks": "Merci pour votre retour !",
     "slime_tooltip": "Retour en haut !",
-    "footer_text": "&copy; 2026 Fangyuan Lin. All rights reserved."
+    "footer_text": "&copy; 2026 Fangyuan Lin. Tous droits réservés."
   }
 }
