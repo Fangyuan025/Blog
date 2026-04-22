@@ -23,7 +23,7 @@
   const nodeCount = 80;
   const spread = 7;
   const connectionDist = 2.8;
-  const accent = 0x818cf8;
+  const accent = 0x7cffb2; // phosphor green — matches --accent in CSS
 
   const nodeGeo = new THREE.SphereGeometry(0.045, 8, 8);
   const nodes = [];
