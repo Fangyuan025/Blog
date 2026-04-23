@@ -10,9 +10,8 @@
  *  - Twinkle: a handful of nodes scaled by a sine wave each frame
  *  - Breathing wireframe icosahedron at the core
  *  - Spring-damped mouse parallax (feels weighty, not whippy)
- *  - LEFT-CLICK: "fire a neuron" — nearest node flashes, up to 10
- *    burst-pulses shoot outward along incident edges, and a
- *    billboarded shockwave ring expands and fades at the node
+ *  - LEFT-CLICK: "fire a neuron" — nearest node flashes and up to 10
+ *    burst-pulses shoot outward along incident edges
  *  - Respects prefers-reduced-motion
  */
 (function () {
@@ -246,26 +245,6 @@
   // ---- Node flash buffer (transient size boost from clicks) ----
   const flashBoost = new Float32Array(NODE_COUNT); // additive, decays each frame
 
-  // ---- Shockwave ring (expanding additive circle at click origin) ----
-  const shockGeo = new THREE.RingGeometry(0.05, 0.08, 64);
-  const shockMat = new THREE.MeshBasicMaterial({
-    color: ACCENT_BRIGHT,
-    transparent: true,
-    opacity: 0,
-    blending: THREE.AdditiveBlending,
-    depthWrite: false,
-    side: THREE.DoubleSide,
-  });
-  const shock = new THREE.Mesh(shockGeo, shockMat);
-  shock.visible = false;
-  group.add(shock);
-  let shockLife = 0; // 1 -> 0 over time
-  let shockScale = 1;
-  // scratch quaternions for shockwave billboarding (shock lives inside rotating group)
-  const _groupWorldQ = new THREE.Quaternion();
-  const _camWorldQ = new THREE.Quaternion();
-  const _invGroupQ = new THREE.Quaternion();
-
   // ---- Click handling: raycast, find nearest node, spawn burst ----
   const raycaster = new THREE.Raycaster();
   const ndc = new THREE.Vector2();
@@ -313,17 +292,6 @@
       const other = p.forward ? edgePairs[p.edge * 2 + 1] : edgePairs[p.edge * 2];
       flashBoost[other] = Math.max(flashBoost[other], 1.1);
     }
-
-    // Position the shockwave at the node (in group-local coords)
-    shock.position.set(
-      nodePositions[nodeIdx * 3],
-      nodePositions[nodeIdx * 3 + 1],
-      nodePositions[nodeIdx * 3 + 2],
-    );
-    shock.visible = true;
-    shockLife = 1;
-    shockScale = 1;
-    shockMat.opacity = 0.9;
   }
 
   function findNearestNodeToScreen(clientX, clientY) {
@@ -364,8 +332,6 @@
     const idx = findNearestNodeToScreen(tt.clientX, tt.clientY);
     if (idx >= 0) fireBurst(idx);
   });
-  // nudge cursor to signal interactivity
-  renderer.domElement.style.cursor = "pointer";
 
   // ---- Mouse with spring physics ----
   const target = { x: 0, y: 0 };
@@ -497,24 +463,6 @@
     }
     bPos.needsUpdate = true;
     if (burstDirty) bSize.needsUpdate = true;
-
-    // Shockwave ring: expand + fade
-    if (shockLife > 0) {
-      shockLife -= 0.025;
-      shockScale += 0.22;
-      shock.scale.setScalar(shockScale);
-      shockMat.opacity = Math.max(0, shockLife * 0.9);
-      // Billboard toward camera. shock is a child of `group` (which rotates),
-      // so the local quaternion needs to be: inverse(groupWorld) * cameraWorld
-      group.getWorldQuaternion(_groupWorldQ);
-      camera.getWorldQuaternion(_camWorldQ);
-      _invGroupQ.copy(_groupWorldQ).invert();
-      shock.quaternion.copy(_invGroupQ).multiply(_camWorldQ);
-      if (shockLife <= 0) {
-        shock.visible = false;
-        shockMat.opacity = 0;
-      }
-    }
 
     renderer.render(scene, camera);
   }
