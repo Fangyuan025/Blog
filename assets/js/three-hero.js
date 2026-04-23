@@ -10,6 +10,9 @@
  *  - Twinkle: a handful of nodes scaled by a sine wave each frame
  *  - Breathing wireframe icosahedron at the core
  *  - Spring-damped mouse parallax (feels weighty, not whippy)
+ *  - LEFT-CLICK: "fire a neuron" — nearest node flashes, up to 10
+ *    burst-pulses shoot outward along incident edges, and a
+ *    billboarded shockwave ring expands and fades at the node
  *  - Respects prefers-reduced-motion
  */
 (function () {
@@ -214,6 +217,156 @@
     });
   }
 
+  // ---- Adjacency list (for click-burst neighbor lookup) ----
+  // nodeEdges[i] = [{ edge, forward }]  where forward=true means edgePairs[edge*2] === i
+  const nodeEdges = Array.from({ length: NODE_COUNT }, () => []);
+  for (let e = 0; e < numEdges; e++) {
+    const a = edgePairs[e * 2];
+    const b = edgePairs[e * 2 + 1];
+    nodeEdges[a].push({ edge: e, forward: true });
+    nodeEdges[b].push({ edge: e, forward: false });
+  }
+
+  // ---- Click-burst: extra pulses that shoot outward from a specific node ----
+  const BURST_CAPACITY = 64;
+  const burstPositions = new Float32Array(BURST_CAPACITY * 3);
+  const burstSizes = new Float32Array(BURST_CAPACITY); // 0 = inactive
+  const burstGeo = new THREE.BufferGeometry();
+  burstGeo.setAttribute("position", new THREE.BufferAttribute(burstPositions, 3));
+  burstGeo.setAttribute("size", new THREE.BufferAttribute(burstSizes, 1));
+  // slightly brighter/whiter than ambient pulses — these are "user fired"
+  const burstMat = makePointsMat(new THREE.Color(0xffffff));
+  const bursts = new THREE.Points(burstGeo, burstMat);
+  group.add(bursts);
+  // pool of burst-pulse states; size=0 acts as inactive flag
+  const burstState = new Array(BURST_CAPACITY).fill(null).map(() => ({
+    edge: 0, forward: true, t: 0, speed: 0.02, active: false,
+  }));
+
+  // ---- Node flash buffer (transient size boost from clicks) ----
+  const flashBoost = new Float32Array(NODE_COUNT); // additive, decays each frame
+
+  // ---- Shockwave ring (expanding additive circle at click origin) ----
+  const shockGeo = new THREE.RingGeometry(0.05, 0.08, 64);
+  const shockMat = new THREE.MeshBasicMaterial({
+    color: ACCENT_BRIGHT,
+    transparent: true,
+    opacity: 0,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+    side: THREE.DoubleSide,
+  });
+  const shock = new THREE.Mesh(shockGeo, shockMat);
+  shock.visible = false;
+  group.add(shock);
+  let shockLife = 0; // 1 -> 0 over time
+  let shockScale = 1;
+  // scratch quaternions for shockwave billboarding (shock lives inside rotating group)
+  const _groupWorldQ = new THREE.Quaternion();
+  const _camWorldQ = new THREE.Quaternion();
+  const _invGroupQ = new THREE.Quaternion();
+
+  // ---- Click handling: raycast, find nearest node, spawn burst ----
+  const raycaster = new THREE.Raycaster();
+  const ndc = new THREE.Vector2();
+  const clickPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0); // z=0 in world
+  const hitPoint = new THREE.Vector3();
+  const nodeWorld = new THREE.Vector3();
+
+  function allocBurst() {
+    for (let i = 0; i < BURST_CAPACITY; i++) {
+      if (!burstState[i].active) return i;
+    }
+    return -1; // full
+  }
+
+  function fireBurst(nodeIdx) {
+    // Flash the origin node + close neighbors
+    flashBoost[nodeIdx] = Math.max(flashBoost[nodeIdx], 2.2);
+    const neighbors = nodeEdges[nodeIdx];
+    if (!neighbors.length) return;
+    // Spawn a pulse on up to N incident edges, fastest first
+    const MAX_SPAWN = 10;
+    const picks = neighbors.slice();
+    // shuffle
+    for (let i = picks.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [picks[i], picks[j]] = [picks[j], picks[i]];
+    }
+    const n = Math.min(MAX_SPAWN, picks.length);
+    for (let k = 0; k < n; k++) {
+      const slot = allocBurst();
+      if (slot < 0) break;
+      const pick = picks[k];
+      burstState[slot].edge = pick.edge;
+      burstState[slot].forward = pick.forward;
+      burstState[slot].t = 0;
+      burstState[slot].speed = 0.022 + Math.random() * 0.022;
+      burstState[slot].active = true;
+      burstSizes[slot] = 1.9;
+    }
+    burstGeo.attributes.size.needsUpdate = true;
+
+    // Also flash direct neighbors a bit
+    for (let k = 0; k < picks.length; k++) {
+      const p = picks[k];
+      const other = p.forward ? edgePairs[p.edge * 2 + 1] : edgePairs[p.edge * 2];
+      flashBoost[other] = Math.max(flashBoost[other], 1.1);
+    }
+
+    // Position the shockwave at the node (in group-local coords)
+    shock.position.set(
+      nodePositions[nodeIdx * 3],
+      nodePositions[nodeIdx * 3 + 1],
+      nodePositions[nodeIdx * 3 + 2],
+    );
+    shock.visible = true;
+    shockLife = 1;
+    shockScale = 1;
+    shockMat.opacity = 0.9;
+  }
+
+  function findNearestNodeToScreen(clientX, clientY) {
+    const rect = renderer.domElement.getBoundingClientRect();
+    ndc.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+    ndc.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+    raycaster.setFromCamera(ndc, camera);
+
+    // Project each node to screen space, pick closest in NDC distance
+    let bestIdx = -1;
+    let bestDist = Infinity;
+    const tmp = new THREE.Vector3();
+    const worldMat = group.matrixWorld;
+    for (let i = 0; i < NODE_COUNT; i++) {
+      tmp.set(nodePositions[i * 3], nodePositions[i * 3 + 1], nodePositions[i * 3 + 2]);
+      tmp.applyMatrix4(worldMat).project(camera);
+      const dx = tmp.x - ndc.x;
+      const dy = tmp.y - ndc.y;
+      const d = dx * dx + dy * dy;
+      if (d < bestDist) {
+        bestDist = d;
+        bestIdx = i;
+      }
+    }
+    // Bail out if click is way off any node (> ~0.25 NDC)
+    if (bestDist > 0.06) return -1;
+    return bestIdx;
+  }
+
+  renderer.domElement.addEventListener("click", (e) => {
+    const idx = findNearestNodeToScreen(e.clientX, e.clientY);
+    if (idx >= 0) fireBurst(idx);
+  });
+  // also fire on touch-tap
+  renderer.domElement.addEventListener("touchend", (e) => {
+    const tt = e.changedTouches && e.changedTouches[0];
+    if (!tt) return;
+    const idx = findNearestNodeToScreen(tt.clientX, tt.clientY);
+    if (idx >= 0) fireBurst(idx);
+  });
+  // nudge cursor to signal interactivity
+  renderer.domElement.style.cursor = "pointer";
+
   // ---- Mouse with spring physics ----
   const target = { x: 0, y: 0 };
   const spring = { x: 0, y: 0, vx: 0, vy: 0 };
@@ -273,6 +426,14 @@
       const mod = 1 + Math.sin(t * 2.4 + idx * 0.37) * 0.55;
       sizeAttr.array[idx] = baseSizes[idx] * mod;
     }
+    // Decay click-flash boosts and add them on top of twinkle
+    for (let i = 0; i < NODE_COUNT; i++) {
+      if (flashBoost[i] > 0) {
+        sizeAttr.array[i] = baseSizes[i] * (1 + flashBoost[i]);
+        flashBoost[i] *= 0.92; // exponential decay, ~30 frames to fade
+        if (flashBoost[i] < 0.02) flashBoost[i] = 0;
+      }
+    }
     sizeAttr.needsUpdate = true;
 
     // Edge opacity gently breathes too
@@ -302,6 +463,59 @@
     }
     pPos.needsUpdate = true;
 
+    // Burst pulses (click-spawned, directional from clicked node outward)
+    const bPos = burstGeo.attributes.position;
+    const bSize = burstGeo.attributes.size;
+    let burstDirty = false;
+    for (let i = 0; i < BURST_CAPACITY; i++) {
+      const bs = burstState[i];
+      if (!bs.active) continue;
+      bs.t += bs.speed;
+      if (bs.t >= 1) {
+        bs.active = false;
+        burstSizes[i] = 0; // inactive -> zero size (shader still draws sprite, but 0 size = nothing)
+        burstDirty = true;
+        continue;
+      }
+      const a = edgePairs[bs.edge * 2];
+      const b = edgePairs[bs.edge * 2 + 1];
+      // forward=true: from a -> b ; forward=false: from b -> a
+      const fromIdx = bs.forward ? a : b;
+      const toIdx   = bs.forward ? b : a;
+      const fx = nodePositions[fromIdx * 3];
+      const fy = nodePositions[fromIdx * 3 + 1];
+      const fz = nodePositions[fromIdx * 3 + 2];
+      const tx = nodePositions[toIdx * 3];
+      const ty = nodePositions[toIdx * 3 + 1];
+      const tz = nodePositions[toIdx * 3 + 2];
+      bPos.array[i * 3]     = fx + (tx - fx) * bs.t;
+      bPos.array[i * 3 + 1] = fy + (ty - fy) * bs.t;
+      bPos.array[i * 3 + 2] = fz + (tz - fz) * bs.t;
+      // size: fade as it travels (brightest at spawn, softer on arrival)
+      burstSizes[i] = 2.1 * (1 - bs.t * 0.4);
+      burstDirty = true;
+    }
+    bPos.needsUpdate = true;
+    if (burstDirty) bSize.needsUpdate = true;
+
+    // Shockwave ring: expand + fade
+    if (shockLife > 0) {
+      shockLife -= 0.025;
+      shockScale += 0.22;
+      shock.scale.setScalar(shockScale);
+      shockMat.opacity = Math.max(0, shockLife * 0.9);
+      // Billboard toward camera. shock is a child of `group` (which rotates),
+      // so the local quaternion needs to be: inverse(groupWorld) * cameraWorld
+      group.getWorldQuaternion(_groupWorldQ);
+      camera.getWorldQuaternion(_camWorldQ);
+      _invGroupQ.copy(_groupWorldQ).invert();
+      shock.quaternion.copy(_invGroupQ).multiply(_camWorldQ);
+      if (shockLife <= 0) {
+        shock.visible = false;
+        shockMat.opacity = 0;
+      }
+    }
+
     renderer.render(scene, camera);
   }
   animate();
@@ -314,5 +528,6 @@
     nodeMat.uniforms.uPixelRatio.value = renderer.getPixelRatio();
     ringPoints.material.uniforms.uPixelRatio.value = renderer.getPixelRatio();
     pulseMat.uniforms.uPixelRatio.value = renderer.getPixelRatio();
+    burstMat.uniforms.uPixelRatio.value = renderer.getPixelRatio();
   });
 })();
