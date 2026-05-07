@@ -779,8 +779,10 @@ nav .logo h1 {
   flex: 1 1 55%;
   min-width: 0;
 }
-.bento-card-inner > .terminal-mockup {
+.bento-card-inner > .terminal-mockup,
+.bento-full .bento-wide-inner > .terminal-mockup {
   flex: 0 0 45%;
+  min-width: 0;
 }
 
 .project-info h3 {
@@ -1773,6 +1775,14 @@ a:hover {
     /* Full-width on mobile — bubbles wrap less, so we can shrink slightly.
        Still fixed so streaming never reflows the page. */
     height: 320px;
+    flex: 0 0 auto;
+  }
+
+  /* Dead Static demoted to bento-full keeps its terminal mockup; on mobile
+     it stacks below the project info and goes full width like the other
+     demoted-card mockups. */
+  .bento-full .bento-wide-inner > .terminal-mockup {
+    width: 100%;
     flex: 0 0 auto;
   }
 

@@ -170,12 +170,24 @@ document.addEventListener("DOMContentLoaded", function () {
     revealObserver.observe(sec);
   });
 
-  // ===== Terminal Typewriter (DEAD STATIC card) =====
-  var terminalOutput = document.getElementById("terminal-output");
-  var terminalCursor = document.querySelector(".terminal-cursor");
-
-  if (terminalOutput) {
-    var terminalLines = [
+  // ===== Terminal Typewriters =====
+  // Supports multiple .terminal-mockup blocks on one page; each picks its
+  // line set from TERMINAL_SCRIPTS by data-terminal-id, animates when it
+  // scrolls into view, and loops independently.
+  var TERMINAL_SCRIPTS = {
+    hushdoc: [
+      "> hushdoc.bat",
+      "> Detecting GPU... CUDA 12.4 found.",
+      "> Loading Qwen3-1.7B Q4_K_M (1.2 GB)...",
+      "> [████████████████████] ready in 8.3s",
+      "> Indexing 'paper.pdf'... 47 chunks.",
+      "",
+      "you: What does Section 3 conclude?",
+      "",
+      "hushdoc: RAG cuts hallucination by",
+      "~38% on the benchmark. [paper p.12]",
+    ],
+    deadstatic: [
       "> Initializing Dead Static v0.1...",
       "> Loading Qwen-1.7B GGUF model...",
       "> [████████████████████] 100%",
@@ -187,73 +199,78 @@ document.addEventListener("DOMContentLoaded", function () {
       "[A] Fight them head-on",
       "[B] Hide in the basement",
       "[C] Scavenge for supplies",
-    ];
+    ],
+  };
+
+  function startTerminal(mockupEl) {
+    var id = mockupEl.getAttribute("data-terminal-id");
+    var script = TERMINAL_SCRIPTS[id];
+    var output = mockupEl.querySelector(".terminal-output");
+    if (!script || !output) return;
+
     var lineIndex = 0;
     var charIndex = 0;
     var currentLineEl = null;
 
-    function typeTerminal() {
-      if (lineIndex >= terminalLines.length) {
-        // Restart after a pause
+    function step() {
+      if (lineIndex >= script.length) {
+        // Loop after a pause
         setTimeout(function () {
-          terminalOutput.innerHTML = "";
+          output.innerHTML = "";
           lineIndex = 0;
           charIndex = 0;
           currentLineEl = null;
-          typeTerminal();
+          step();
         }, 4000);
         return;
       }
 
-      var line = terminalLines[lineIndex];
+      var line = script[lineIndex];
 
       if (!currentLineEl) {
         currentLineEl = document.createElement("div");
-        terminalOutput.appendChild(currentLineEl);
+        output.appendChild(currentLineEl);
       }
 
       if (line === "") {
-        // Empty line — just add a break
         currentLineEl.innerHTML = "&nbsp;";
         lineIndex++;
         charIndex = 0;
         currentLineEl = null;
-        setTimeout(typeTerminal, 300);
+        setTimeout(step, 300);
         return;
       }
 
       if (charIndex < line.length) {
         currentLineEl.textContent += line.charAt(charIndex);
         charIndex++;
-        // Faster for loading bar line
-        var delay = line.includes("█") ? 15 : 35;
-        setTimeout(typeTerminal, delay);
+        // Loading-bar line types fast; everything else feels like real typing
+        var delay = line.indexOf("█") >= 0 ? 15 : 35;
+        setTimeout(step, delay);
       } else {
         lineIndex++;
         charIndex = 0;
         currentLineEl = null;
-        setTimeout(typeTerminal, 400);
+        setTimeout(step, 400);
       }
     }
 
-    // Start terminal animation when the card scrolls into view
-    var terminalCard = document.querySelector(".bento-featured");
-    if (terminalCard) {
-      var terminalStarted = false;
-      var terminalObserver = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting && !terminalStarted) {
-              terminalStarted = true;
-              typeTerminal();
-            }
-          });
-        },
-        { threshold: 0.3 }
-      );
-      terminalObserver.observe(terminalCard);
-    }
+    var started = false;
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !started) {
+            started = true;
+            step();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    io.observe(mockupEl);
   }
+
+  document.querySelectorAll(".terminal-mockup[data-terminal-id]").forEach(startTerminal);
 
   // ===== Chat Preview Replay + Streaming (Interview Chatbot) =====
   var chatPreview = document.getElementById("chat-preview");

@@ -330,10 +330,80 @@
     <section id="projects" class="section">
       <h2 data-i18n="proj_title">Projects</h2>
       <div class="bento-grid">
-        <!-- DEAD STATIC — Featured 2×2 -->
+        <!-- HUSHDOC — Featured 2×2 (latest project) -->
         <div class="bento-card bento-featured">
           <div class="bento-card-inner">
             <div class="project-info">
+              <h3 data-i18n="proj_hd_title">
+                Hushdoc: Local-First RAG over Your Documents
+              </h3>
+              <span class="project-meta" data-i18n="proj_hd_meta"
+                >Solo Developer | FastAPI · React · llama.cpp · ChromaDB</span
+              >
+              <ul>
+                <li data-i18n="proj_hd_li1">
+                  <strong>Architecture:</strong> Built a fully offline
+                  chat-with-PDF/DOCX/image app — FastAPI + React 19 + Vite
+                  frontend talking to a local <code>llama-server</code> over
+                  its OpenAI-compatible API. <strong>No upload, ever.</strong>
+                </li>
+                <li data-i18n="proj_hd_li2">
+                  <strong>RAG Pipeline:</strong> Docling parsing →
+                  HybridChunker → ChromaDB → bi-encoder retrieval +
+                  cross-encoder reranker, with per-document summary cache and
+                  balanced multi-doc retrieval so wordy files don't crowd
+                  others out.
+                </li>
+                <li data-i18n="proj_hd_li3">
+                  <strong>Polish:</strong> Streaming answers with inline
+                  <code>[file p.5]</code> citation chips, bilingual
+                  zh/en with per-turn language pinning, push-to-talk
+                  voice (Whisper + Kokoro TTS), and a one-click
+                  <code>.bat</code> launcher with auto-cleanup on exit.
+                </li>
+              </ul>
+              <div class="tech-badges">
+                <span class="badge">FastAPI</span>
+                <span class="badge">React 19</span>
+                <span class="badge">llama.cpp</span>
+                <span class="badge">ChromaDB</span>
+                <span class="badge">Docling</span>
+                <span class="badge">Ragas</span>
+              </div>
+              <a
+                href="https://github.com/Fangyuan025/hushdoc"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-sm"
+                data-i18n="proj_hd_source"
+                >View Source Code</a
+              >
+            </div>
+            <div class="terminal-mockup" data-terminal-id="hushdoc">
+              <div class="terminal-header">
+                <span class="terminal-dot" style="background: #ff5f57"></span>
+                <span class="terminal-dot" style="background: #febc2e"></span>
+                <span class="terminal-dot" style="background: #28c840"></span>
+                <span class="terminal-title">hushdoc.bat</span>
+              </div>
+              <div class="terminal-body">
+<pre class="terminal-logo" aria-hidden="true">██╗  ██╗██╗   ██╗███████╗██╗  ██╗██████╗  ██████╗  ██████╗
+██║  ██║██║   ██║██╔════╝██║  ██║██╔══██╗██╔═══██╗██╔════╝
+███████║██║   ██║███████╗███████║██║  ██║██║   ██║██║
+██╔══██║██║   ██║╚════██║██╔══██║██║  ██║██║   ██║██║
+██║  ██║╚██████╔╝███████║██║  ██║██████╔╝╚██████╔╝╚██████╗
+╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚═════╝</pre>
+                <div class="terminal-output"></div>
+                <span class="terminal-cursor">_</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEAD STATIC — full-width below Hushdoc -->
+        <div class="bento-card bento-full bento-deadstatic">
+          <div class="bento-wide-inner">
+            <div>
               <h3 data-i18n="proj_ds_title">
                 Dead Static: Local LLM Survival Game
               </h3>
@@ -366,12 +436,13 @@
               <a
                 href="https://github.com/Fangyuan025/dead-static"
                 target="_blank"
+                rel="noopener"
                 class="btn btn-sm"
                 data-i18n="proj_ds_source"
                 >View Source Code</a
               >
             </div>
-            <div class="terminal-mockup">
+            <div class="terminal-mockup" data-terminal-id="deadstatic">
               <div class="terminal-header">
                 <span class="terminal-dot" style="background: #ff5f57"></span>
                 <span class="terminal-dot" style="background: #febc2e"></span>
@@ -385,7 +456,7 @@
  ██║  ██║██╔══╝  ██╔══██║██║  ██║    ╚════██║   ██║   ██╔══██║   ██║   ██║██║
  ██████╔╝███████╗██║  ██║██████╔╝    ███████║   ██║   ██║  ██║   ██║   ██║╚██████╗
  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═════╝     ╚══════╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝</pre>
-                <div id="terminal-output"></div>
+                <div class="terminal-output"></div>
                 <span class="terminal-cursor">_</span>
               </div>
             </div>
