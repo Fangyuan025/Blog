@@ -785,6 +785,39 @@ nav .logo h1 {
   min-width: 0;
 }
 
+/* ===== HUSHDOC — Screenshot showcase =====
+   Replaces the terminal mockup for the featured Hushdoc card. Same
+   45% column / 360px height as the terminal so the layout grid stays
+   consistent with the demoted Dead Static card below. */
+.bento-card-inner > .hushdoc-screenshot {
+  flex: 0 0 45%;
+  min-width: 0;
+  display: block;
+  height: 360px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0b0b0f;
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.6);
+  transition: var(--transition);
+  position: relative;
+}
+.bento-card-inner > .hushdoc-screenshot:hover {
+  border-color: rgba(129, 140, 248, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 22px 50px -22px rgba(129, 140, 248, 0.35);
+}
+.bento-card-inner > .hushdoc-screenshot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Anchor to the top so the chat header (Hushdoc + ready chip) is
+     always visible, even though the bottom of the screenshot may
+     crop on narrower cards. */
+  object-position: top center;
+  display: block;
+}
+
 .project-info h3 {
   /* Same size as .bento-full h3 — keeps all three project titles uniform. */
   font-size: 1.1rem;
@@ -1674,9 +1707,13 @@ a:hover {
     flex-direction: column;
   }
   .bento-card-inner > .project-info,
-  .bento-card-inner > .terminal-mockup {
+  .bento-card-inner > .terminal-mockup,
+  .bento-card-inner > .hushdoc-screenshot {
     flex: 0 0 auto;
     width: 100%;
+  }
+  .bento-card-inner > .hushdoc-screenshot {
+    height: 220px;
   }
 
   .terminal-mockup {

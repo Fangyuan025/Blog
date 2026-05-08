@@ -175,18 +175,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // line set from TERMINAL_SCRIPTS by data-terminal-id, animates when it
   // scrolls into view, and loops independently.
   var TERMINAL_SCRIPTS = {
-    hushdoc: [
-      "> hushdoc.bat",
-      "> Detecting GPU... CUDA 12.4 found.",
-      "> Loading Qwen3-1.7B Q4_K_M (1.2 GB)...",
-      "> [████████████████████] ready in 8.3s",
-      "> Indexing 'paper.pdf'... 47 chunks.",
-      "",
-      "you: What does Section 3 conclude?",
-      "",
-      "hushdoc: RAG cuts hallucination by",
-      "~38% on the benchmark. [paper p.12]",
-    ],
     deadstatic: [
       "> Initializing Dead Static v0.1...",
       "> Loading Qwen-1.7B GGUF model...",
