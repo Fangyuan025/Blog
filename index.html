@@ -379,14 +379,18 @@
                 >View Source Code</a
               >
             </div>
-            <div class="hushdoc-screenshot">
+            <button
+              type="button"
+              class="hushdoc-screenshot lightbox-trigger"
+              aria-label="View full-size Hushdoc UI screenshot"
+            >
               <img
                 src="assets/images/hushdoc-ui.png"
                 alt="Hushdoc UI: chat with documents, citation chips, sidebar with file scope"
                 loading="lazy"
                 decoding="async"
               />
-            </div>
+            </button>
           </div>
         </div>
 
@@ -711,6 +715,20 @@
       <img src="assets/images/math_slime.png" alt="" aria-hidden="true" />
       <span class="slime-mascot-msg">BLORP! ↑</span>
     </button>
+
+    <!-- Lightbox overlay (click any .lightbox-trigger img to open full-size) -->
+    <dialog
+      id="lightbox"
+      class="lightbox"
+      aria-label="Full-size image"
+    >
+      <img class="lightbox-img" alt="" />
+      <button
+        type="button"
+        class="lightbox-close"
+        aria-label="Close full-size image"
+      >×</button>
+    </dialog>
 
     <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>

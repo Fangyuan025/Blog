@@ -260,6 +260,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelectorAll(".terminal-mockup[data-terminal-id]").forEach(startTerminal);
 
+  // ===== Lightbox =====
+  // Any .lightbox-trigger element containing an <img> can pop the image
+  // open in a full-screen <dialog>. Backdrop click, × button, or Esc
+  // (native <dialog> behavior) close it.
+  var lightbox = document.getElementById("lightbox");
+  if (lightbox) {
+    var lightboxImg = lightbox.querySelector(".lightbox-img");
+    var lightboxClose = lightbox.querySelector(".lightbox-close");
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || "";
+      if (typeof lightbox.showModal === "function") {
+        lightbox.showModal();
+      } else {
+        // Old browsers without <dialog>: fall back to setting open attr.
+        lightbox.setAttribute("open", "");
+      }
+    }
+
+    function closeLightbox() {
+      if (typeof lightbox.close === "function" && lightbox.open) {
+        lightbox.close();
+      } else {
+        lightbox.removeAttribute("open");
+      }
+      // Drop the src so a future open with a different image doesn't
+      // briefly flash the old one.
+      lightboxImg.removeAttribute("src");
+    }
+
+    document.querySelectorAll(".lightbox-trigger").forEach(function (trigger) {
+      trigger.addEventListener("click", function () {
+        var img = trigger.querySelector("img");
+        if (!img) return;
+        openLightbox(img.currentSrc || img.src, img.alt);
+      });
+    });
+
+    // Backdrop click closes — anywhere outside the image itself.
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox || e.target === lightboxImg) {
+        // image click also closes (cursor: zoom-out)
+        closeLightbox();
+      }
+    });
+    if (lightboxClose) {
+      lightboxClose.addEventListener("click", closeLightbox);
+    }
+  }
+
   // ===== Chat Preview Replay + Streaming (Interview Chatbot) =====
   var chatPreview = document.getElementById("chat-preview");
   if (chatPreview) {
